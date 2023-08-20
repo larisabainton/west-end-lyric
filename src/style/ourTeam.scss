@@ -1,0 +1,59 @@
+.ourTeam {
+    padding: 2%;
+    height: 40vh;
+}
+
+.ourTeam_title {
+    font-size: 56px;
+    color: $base-color;
+    font-family: $title-font;
+}
+
+.ourTeam_paragraph {
+    color: $base-color;
+    font-size: 16px;
+    padding-bottom: 3%
+}
+
+.ourTeam_title,
+.ourTeam_paragraph {
+    padding-left: 5%;
+}
+
+.ourTeam_teamMembers {
+    display: flex;
+    background-color: $neutral-color;
+    justify-content: space-around;
+    padding: 2%;
+}
+
+.ourTeam_teamMember {
+    width: 200px;
+}
+
+.teamMember_information {
+    background-color: white;
+    width: calc(200px - 3%);
+    padding-left: 3%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+}   
+
+.teamMember_name {
+    color: $highlight-color;
+    font-family: $title-font;
+}
+
+.teamMember_jobTitle {
+    color: $base-color;
+    font-weight: lighter;
+    font-size: 13px;
+}
+
+.teamMember_headshot {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 50%;
+}

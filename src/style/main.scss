@@ -1,0 +1,12 @@
+@import 'constants';
+
+@import 'aboutUs';
+@import 'cover';
+@import 'events';
+@import 'header';
+@import 'ourTeam';
+
+body {
+    font-family: $base-font;
+    margin: 0px;
+}

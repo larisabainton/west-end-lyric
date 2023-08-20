@@ -1,0 +1,50 @@
+$section-height: 40vh;
+$h1-font-size: 56px;
+$h2-font-size: 20px;
+$text-font-size: 18px;
+
+.aboutUs {
+    align-items: center;
+    display: flex;
+    height: $section-height;
+}
+
+.aboutUs_left,
+.aboutUs_right {
+    width: 50%;
+    height: 100%;
+}
+
+.aboutUs_left {
+    align-items: center;
+    background-color: $base-color;
+    color: white;
+    display: flex;
+    font-family: $title-font;
+    font-size: $h1-font-size;
+    justify-content: center;
+}
+
+.aboutUs_right {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    .aboutUs_right-title,
+    .aboutUs_right-text {
+        padding-left: 10%;
+    }
+
+    .aboutUs_right-title {
+        font-family: $title-font;
+        font-size: $h2-font-size;
+        color: $highlight-color;
+        padding-bottom: 5%;
+    }
+
+    .aboutUs_right-text {
+        color: $base-color;
+        font-size: $text-font-size;
+        line-height: 2;
+    }
+}

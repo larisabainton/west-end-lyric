@@ -1,0 +1,78 @@
+$title-font-size: 65px;
+
+/* container for whole events section */
+.events {
+    display: flex;
+    flex-direction: column;
+    padding: 7%;
+}
+
+.events_title {
+    color: $base-color;
+    font-family: $title-font;
+    font-size: $title-font-size;
+
+}
+
+/* list of each event */
+.events_eventList {
+    background-color: $neutral-color;
+    padding-right: 5%;
+    padding-left: 5%;
+    font-size: 17px;
+
+    li:last-child {
+        border-bottom: 0px;
+    }
+}
+
+/* each individual event */
+.eventList_event {
+    border-bottom: 2px solid $accent-color;
+    display: flex;
+    flex-direction: row;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    align-items: center;
+    justify-content: space-between;
+
+    /* container for date, month, year, and time*/
+    .eventList_event--calendar {
+        display: flex;
+        flex-direction: row;
+    }
+
+    /* container for date, month, year */
+    .eventList_event--date-container {
+        padding-right: 5px;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        color: $base-color;
+        width: 100px;
+    }
+
+    .eventList_event--date-and-title {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    /* month and day */
+    .eventList_event--date {
+        font-size: 25px;
+        font-weight: bold;
+    }
+}
+
+.eventList_event--title {
+    font-family: $title-font;
+    color: $highlight-color;
+    font-size: 20px;
+}
+
+.eventList_event--location {
+    font-size: 17px;
+    color: $base-color;
+}

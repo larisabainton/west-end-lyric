@@ -1,0 +1,19 @@
+.header,
+.header_link-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.header {
+    justify-content: space-between;
+    
+    img {
+        width: 200px;
+        padding-left: 10px;
+    }
+}
+
+.header_link {
+    color: $base-color;
+    padding: 8px;
+}
