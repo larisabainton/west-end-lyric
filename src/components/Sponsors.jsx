@@ -10,7 +10,7 @@ class Sponsors extends React.Component {
         <div className="sponsors">
             <div className="sponsors-text">
                 <div className="sponsors-text_title">Boston Synagogue</div>
-                <div className="sponsors-text_sub-title">Backroom Boston</div>
+                <div className="sponsors-text_sub-title">BackRoom Boston</div>
                 <div className="sponsors-text_paragraph">{backroomText}</div>
             </div>
             <div className="sponsors-photo">

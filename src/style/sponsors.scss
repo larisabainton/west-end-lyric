@@ -1,0 +1,20 @@
+.sponsors {
+    display: flex;
+}
+
+.sponsors-text_title {
+    font-size: 56px;
+    font-family: $title-font;
+    color: $base-color;
+}
+
+.sponsors-text_sub-title {
+    font-family: $title-font;
+    font-size: 26px;
+    color: $base-color;
+}
+
+.sponsors-text_paragraph {
+    color: $base-color;
+    line-height: 1.5;
+}
