@@ -1,5 +1,14 @@
 .sponsors {
     display: flex;
+    background-color: $highlight-color;
+    padding: 10%;
+    width: 100%;
+}
+
+.sponsors-text {
+    background-color: white;
+    width: 70%;
+    padding: 5%;
 }
 
 .sponsors-text_title {
@@ -8,13 +17,17 @@
     color: $base-color;
 }
 
-.sponsors-text_sub-title {
-    font-family: $title-font;
-    font-size: 26px;
-    color: $base-color;
+.sponsors_list-item {
+    display: flex;
+    justify-content: center;
 }
 
-.sponsors-text_paragraph {
+.sponsors-name {
+    width: 50%;
     color: $base-color;
-    line-height: 1.5;
+    font-size: 25px;
+}
+
+.sponsors-photo img{
+    height: 50px;
 }
