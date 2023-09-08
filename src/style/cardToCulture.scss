@@ -2,16 +2,15 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    border: 10px solid $base-color;
-    margin: 20px;
-    padding: 20px;
-    background-color: $neutral-color;
+    border: 3em solid $highlight-color;
+    padding: 5%;
+    margin-top: 5%;
+
 }
 
 .card-to-culture_title {
     font-family: $title-font;
-    color: $accent-color;
+    color: $base-color;
     font-size: $title-font-size;
 }
 

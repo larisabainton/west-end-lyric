@@ -104,8 +104,8 @@ const IndexPage = () => {
       <AboutUs />
       <Events eventList={upcomingEvents} />
       <OurTeam teamMembers={teamMembers}/>
-      <Sponsors />
       <CardToCulture />
+      <Sponsors />
       <Contact />
     </div>
   )
