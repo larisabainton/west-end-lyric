@@ -1,0 +1,40 @@
+$contact-section-border: $base-color solid 1px;
+
+.contact {
+    width: 100%;
+    background-color: $neutral-color;
+}
+
+.contact-list {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0%;
+    width: 100%;
+}
+
+.contact-list_item {
+    border-top: $contact-section-border;
+    border-bottom: $contact-section-border;
+    border-left: $contact-section-border;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
+.contact li:last-child {
+    border-right: $contact-section-border;
+}
+
+.contact-list_title {
+    color: $highlight-color;
+    font-family: $title-font;
+    font-size: 20px;
+}
+
+.contact-list_text {
+    color: $base-color;
+}

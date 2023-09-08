@@ -2,6 +2,7 @@
 
 @import 'aboutUs';
 @import 'cardToCulture';
+@import 'contact';
 @import 'cover';
 @import 'events';
 @import 'header';
@@ -11,4 +12,5 @@
 body {
     font-family: $base-font;
     margin: 0px;
+    min-height: 100vh;
 }
