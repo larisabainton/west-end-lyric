@@ -9,6 +9,7 @@ import larisaHeadshot from '../images/headshots/Larisa_headshot.jpg';
 
 
 import AboutUs from '../components/AboutUs';
+import CardToCulture from "../components/CardToCulture";
 import Contact from '../components/Contact';
 import Cover from '../components/Cover';
 import Events from '../components/Events';
@@ -104,6 +105,7 @@ const IndexPage = () => {
       <Events eventList={upcomingEvents} />
       <OurTeam teamMembers={teamMembers}/>
       <Sponsors />
+      <CardToCulture />
       <Contact />
     </div>
   )

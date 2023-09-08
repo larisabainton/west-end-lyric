@@ -1,0 +1,21 @@
+.card-to-culture {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 10px solid $base-color;
+    margin: 20px;
+    padding: 20px;
+    background-color: $neutral-color;
+}
+
+.card-to-culture_title {
+    font-family: $title-font;
+    color: $accent-color;
+    font-size: $title-font-size;
+}
+
+.card-to-culture_text {
+    line-height: 1.5;
+    color: navy;
+}
