@@ -23,7 +23,7 @@ const upcomingEvents = [
     month: "Nov",
     year: 2023,
     time: "7pm",
-    location: "Wilbur Fisk",
+    location: "Somerville Music Spaces",
     title: "The Card Game / Coffee Cantata ",
   },
   {

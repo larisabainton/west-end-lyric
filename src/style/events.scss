@@ -43,7 +43,6 @@
 
     /* container for date, month, year */
     .eventList_event--date-container {
-        padding-right: 5px;
         justify-content: center;
         display: flex;
         align-items: center;
@@ -69,9 +68,15 @@
     font-family: $title-font;
     color: $highlight-color;
     font-size: 20px;
+    padding-left: 35px;
 }
 
 .eventList_event--location {
     font-size: 17px;
     color: $base-color;
+}
+
+.eventList_event--time {
+    color: $base-color;
+    font-size: 20px;
 }

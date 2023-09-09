@@ -34,7 +34,7 @@ class Events extends React.Component {
                                     <div className="eventList_event--date">{month} {date}</div>
                                     <div className="eventList_event--year">{year}</div> 
                                 </div>
-                                {/* <div className="eventList_event--time">{time}</div> */}
+                                <div className="eventList_event--time">{time}</div>
                                 <div className="eventList_event--title">{title}</div>
                             </div>
                             <div className="eventList_event--location">{location}</div>
