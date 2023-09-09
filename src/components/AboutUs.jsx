@@ -7,7 +7,7 @@ const text = "West End Lyric is a new performing arts collective in Boston’s W
 class AboutUs extends React.Component {
     render() {
         return (
-        <div className="aboutUs">
+        <div className="aboutUs" id="aboutUs">
             <div className="aboutUs_left">
                 {heading}
             </div>

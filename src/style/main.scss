@@ -9,6 +9,10 @@
 @import 'ourTeam';
 @import 'sponsors';
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: $base-font;
     margin: 0px;

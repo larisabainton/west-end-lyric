@@ -24,7 +24,7 @@ class Events extends React.Component {
     
     render() {
         return (<div>
-            <div className="events">
+            <div className="events" id="events">
                 <div className="events_title">Upcoming Performances</div>
                 <ul className="events_eventList">
                     {this.eventList.map(({ date, month, year, time, location, title }) => (

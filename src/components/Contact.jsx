@@ -2,7 +2,7 @@ import React from 'react';
 
 class Contact extends React.Component {
     render() {
-        return (<div className="contact">
+        return (<div className="contact" id="contact">
             <ul className="contact-list">
                 <li className="contact-list_email contact-list_item">
                     <div className="contact-list_title">Email</div>
