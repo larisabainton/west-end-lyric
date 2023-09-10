@@ -29,11 +29,7 @@ $text-font-size: 18px;
     display: flex;
     justify-content: center;
     flex-direction: column;
-
-    .aboutUs_right-title,
-    .aboutUs_right-text {
-        padding-left: 10%;
-    }
+    padding-left: 5%;
 
     .aboutUs_right-title {
         font-family: $title-font;
@@ -47,4 +43,35 @@ $text-font-size: 18px;
         font-size: $text-font-size;
         line-height: 2;
     }
+}
+
+@media screen and (max-width: 600px) {
+    .aboutUs_right-text {
+        font-size: 16px;
+    }
+    
+    .aboutUs_left-text {
+        font-size: 18px;
+    }
+
+    /* title */
+    .aboutUs_left {
+        width: 100%;
+        height: 100%;
+        padding-top: 15%;
+        padding-bottom: 15%;
+    }
+
+    /* text */
+    .aboutUs_right {
+        width: 90%;
+        padding-top: 5%;
+        padding-bottom: 5%;
+    }
+
+    .aboutUs {
+        flex-direction: column;
+        height: 100%;
+    }
+
 }
