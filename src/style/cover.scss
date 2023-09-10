@@ -60,3 +60,22 @@ $cover-height: 800px;
         padding-right: 2%;
     }
 }
+
+@media screen and (max-width: 600px) {
+    .cover_photo {
+        width: 500px;
+        opacity: 50%;
+    }
+
+    .cover_welcome-text--small {
+        font-size: 1.5em;
+    }
+
+    .cover_welcome-text--large {
+        font-size: 6em;
+    }
+
+    .cover_welcome-text_social-media-icons {
+        font-size: 1.5em;
+    }
+}
