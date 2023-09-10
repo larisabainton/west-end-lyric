@@ -38,3 +38,28 @@ $contact-section-border: $base-color solid 1px;
 .contact-list_text {
     color: $base-color;
 }
+
+.contact-list_icon {
+    color: $accent-color;
+    font-size: 25px;
+    padding-bottom: 2%;
+}
+
+.contact-list_social-media-links {
+    font-size: 23px;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    a {
+        color: $base-color;
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+}
+
+.contact-list_social-media-links,
+.contact-list_text {
+    padding-top: 2%;
+}

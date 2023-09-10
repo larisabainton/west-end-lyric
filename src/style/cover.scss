@@ -48,3 +48,15 @@ $cover-height: 800px;
     color: $base-color;
     line-height: 1;
 }
+
+.cover_welcome-text_social-media-icons {
+    padding-top: 5%;
+    font-size: 30px;
+
+    a {
+        color: white;
+        background-color: $accent-color;
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+}
