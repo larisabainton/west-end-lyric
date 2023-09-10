@@ -17,4 +17,14 @@
 .card-to-culture_text {
     line-height: 1.5;
     color: $base-color;
+
+    a {
+        color: $accent-color;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    a:visited {
+        color: $accent-color;
+    }
 }
