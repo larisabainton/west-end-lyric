@@ -80,3 +80,34 @@
     color: $base-color;
     font-size: 20px;
 }
+
+@media screen and (max-width: 800px) {
+    .events_title {
+        font-size: 3em;
+        padding-top: 4%;
+    }
+
+    .eventList_event--title {
+        font-size: 16px;
+        padding-left: 20px;
+
+    }
+
+    .eventList_event--location {
+        font-size: 16px;
+        padding-left: 5px;
+    }
+
+    .eventList_event
+    .eventList_event--date {
+        font-size: 16px;
+    }
+
+    .eventList_event--time {
+        font-size: 16px;
+    }
+
+    .eventList_event {
+        width: 100%;
+    }
+}

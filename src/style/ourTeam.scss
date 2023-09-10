@@ -56,3 +56,15 @@
     object-position: center top;
     border-radius: 50%;
 }
+
+@media screen and (max-width: 1200px) {
+    .ourTeam_teamMembers {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .ourTeam_teamMember {
+        padding-top: 5%;
+    }
+}

@@ -49,3 +49,9 @@
     color: $base-color;
     line-height: 1.5;
 }
+
+@media screen and (max-width: 600px) {
+    .sponsors_list {
+        flex-direction: column;
+    }
+}
