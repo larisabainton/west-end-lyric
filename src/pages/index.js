@@ -16,6 +16,7 @@ import Events from '../components/Events';
 import Header from '../components/Header';
 import OurTeam from '../components/OurTeam';
 import Sponsors from '../components/Sponsors';
+import '@fortawesome/fontawesome-svg-core/styles.css';
 
 const upcomingEvents = [
   {
@@ -95,6 +96,7 @@ const teamMembers = [
     headshot: juliaHeadshot,
   }
 ]
+
 
 const IndexPage = () => {
   return (
