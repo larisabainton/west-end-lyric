@@ -5,6 +5,7 @@ module.exports = {
   siteMetadata: {
     siteUrl: `https://www.yourdomain.tld`,
   },
+  pathPrefix: "/west-end-lyric",
   plugins: [
     'gatsby-plugin-sass',
     `gatsby-plugin-image`,
