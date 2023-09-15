@@ -29,14 +29,12 @@ class Events extends React.Component {
                 <ul className="events_eventList">
                     {this.eventList.map(({ date, month, year, time, location, title }) => (
                         <li className="eventList_event" key={title}>
-                            <div className = "eventList_event--date-and-title">
                                 <div className="eventList_event--date-container">
                                     <div className="eventList_event--date">{month} {date}</div>
                                     <div className="eventList_event--year">{year}</div> 
                                 </div>
                                 <div className="eventList_event--time">{time}</div>
                                 <div className="eventList_event--title">{title}</div>
-                            </div>
                             <div className="eventList_event--location">{location}</div>
                         </li>
                     ))}

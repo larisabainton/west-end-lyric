@@ -51,12 +51,6 @@
         width: 100px;
     }
 
-    .eventList_event--date-and-title {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-    }
-
     /* month and day */
     .eventList_event--date {
         font-size: 25px;
@@ -69,6 +63,7 @@
     color: $highlight-color;
     font-size: 20px;
     padding-left: 35px;
+    flex: 2;
 }
 
 .eventList_event--location {
@@ -89,17 +84,11 @@
 
     .eventList_event--title {
         font-size: 16px;
-        padding-left: 20px;
-
+        padding-left: 0px;
+        flex: 2;
     }
 
     .eventList_event--location {
-        font-size: 16px;
-        padding-left: 5px;
-    }
-
-    .eventList_event
-    .eventList_event--date {
         font-size: 16px;
     }
 
@@ -109,5 +98,22 @@
 
     .eventList_event {
         width: 100%;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .eventList_event {
+        .eventList_event--date-container {
+            flex-direction: row;
+        }
+
+        .eventList_event--year {
+            padding-left: 6%;
+        }
+
+        .eventList_event--date {
+            font-size: 16px;
+        }
+
     }
 }
