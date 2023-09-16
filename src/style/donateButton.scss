@@ -1,0 +1,25 @@
+.donate-button {
+    background-color: $highlight-color;
+    color: white;
+    text-decoration: none;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
+    font-size: 20px;
+}
+
+#donate-button:hover {
+    background-color: $highlight-color--light;
+}
+
+.header_donate-button {
+    margin-right: 2%;
+}
+
+.body_donate-button {
+    position: fixed;
+    bottom: 10px;
+    right: 20px;
+    font-size: 30px;
+}

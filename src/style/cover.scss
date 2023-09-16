@@ -64,7 +64,6 @@ $cover-height: 800px;
 @media screen and (max-width: 600px) {
     .cover_photo {
         width: 500px;
-        opacity: 50%;
     }
 
     .cover_welcome-text--small {
@@ -72,7 +71,7 @@ $cover-height: 800px;
     }
 
     .cover_welcome-text--large {
-        font-size: 5em;
+        font-size: 7em;
     }
 
     .cover_welcome-text_social-media-icons {

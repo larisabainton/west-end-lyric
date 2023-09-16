@@ -12,6 +12,7 @@ import AboutUs from '../components/AboutUs';
 import CardToCulture from "../components/CardToCulture";
 import Contact from '../components/Contact';
 import Cover from '../components/Cover';
+import DonateButton from "../components/donateButton";
 import Events from '../components/Events';
 import Header from '../components/Header';
 import OurTeam from '../components/OurTeam';
@@ -101,6 +102,7 @@ const teamMembers = [
 const IndexPage = () => {
   return (
     <div>
+      <DonateButton className= "body_donate-button" />
       <Header />
       <Cover />
       <AboutUs />
