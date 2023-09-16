@@ -16,9 +16,9 @@ class Contact extends React.Component {
                     <FontAwesomeIcon icon={faThumbsUp} className="contact-list_icon"/>
                     <div className="contact-list_title">Connect</div>
                     <div className="contact-list_social-media-links">
-                        <a href="https://www.facebook.com/westendlyric/" target="_blank"><FontAwesomeIcon icon={faFacebook} aria-label="Facebook link"/></a>
-                        <a href="https://www.linkedin.com/company/west-end-lyric" target="_blank"><FontAwesomeIcon icon={faLinkedin} aria-label="Linked in link"/></a>
-                        <a href="https://www.instagram.com/westendlyric/" target="_blank"><FontAwesomeIcon icon={faInstagram} aria-label="Instagram link"/></a>
+                        <a href="https://www.facebook.com/westendlyric/" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faFacebook} aria-label="Facebook link"/></a>
+                        <a href="https://www.linkedin.com/company/west-end-lyric" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faLinkedin} aria-label="Linked in link"/></a>
+                        <a href="https://www.instagram.com/westendlyric/" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faInstagram} aria-label="Instagram link"/></a>
                     </div>
                 </li>
             </ul>
