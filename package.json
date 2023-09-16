@@ -13,7 +13,7 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "deploy": "gatsby build && gh-pages -d public pages" 
+    "deploy": "gatsby build && gh-pages -d public pages"
   },
   "license": "0BSD",
   "dependencies": {
@@ -25,6 +25,7 @@
     "gatsby": "^5.11.0",
     "gatsby-omni-font-loader": "^2.0.2",
     "gatsby-plugin-image": "^3.11.0",
+    "gatsby-plugin-manifest": "^5.12.0",
     "gatsby-plugin-sass": "^6.11.0",
     "gatsby-plugin-sharp": "^5.11.0",
     "gatsby-source-filesystem": "^5.11.0",
@@ -35,6 +36,6 @@
     "sass": "^1.65.1"
   },
   "devDependencies": {
-    "gh-pages": "^5.0.0" 
+    "gh-pages": "^5.0.0"
   }
 }

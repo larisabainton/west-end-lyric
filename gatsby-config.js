@@ -11,6 +11,12 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        "icon": "src/images/favicon.png"
+      }
+    },
+    {
       resolve: `gatsby-omni-font-loader`,
       options: {
         enableListener: true,
