@@ -10,7 +10,7 @@ class Contact extends React.Component {
                 <li className="contact-list_email contact-list_item">
                     <FontAwesomeIcon icon={faEnvelope} className="contact-list_icon"/>
                     <div className="contact-list_title">Email</div>
-                    <div className="contact-list_text">blochperformingarts@gmail.com</div>
+                    <div className="contact-list_text">westendlyric@gmail.com</div>
                 </li>
                 <li className="contact-list_social-media contact-list_item">
                     <FontAwesomeIcon icon={faThumbsUp} className="contact-list_icon"/>
