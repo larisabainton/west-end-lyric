@@ -1,4 +1,4 @@
-$cover-height: 800px;
+$cover-height: 100vh;
 
 .cover {
     height: $cover-height;
@@ -16,15 +16,20 @@ $cover-height: 800px;
 
 .cover_color-block {
     background-color: $neutral-color;
-    width :100%;
+    width: 45%;
     height: 100%;
 }
 
 .cover_photo {
-    width: 1000px;
-    background-image: url('../images/cover-photo.jpg');
-    background-position: right;
-    background-repeat: no-repeat;
+    display: flex;
+    justify-content: flex-end;
+    overflow-x: hidden;
+
+    .gatsby-image-wrapper {
+        width: 1000px;
+        overflow-x: hidden;
+        position: relative;
+    }
 }
 
 .cover_foreground {
@@ -63,9 +68,9 @@ $cover-height: 800px;
 
 @media screen and (max-width: 600px) {
     .cover_photo {
-        width: 500px;
+        display: none;
     }
-
+    
     .cover_welcome-text--small {
         font-size: 1.5em;
     }
@@ -76,5 +81,11 @@ $cover-height: 800px;
 
     .cover_welcome-text_social-media-icons {
         font-size: 1.5em;
+    }
+}
+
+@media screen and ( max-width:900px ) {
+    .cover_color-block {
+        width: 100%;
     }
 }
