@@ -44,7 +44,7 @@ $cover-height: 100vh;
 }
 
 .cover_welcome-text--small {
-    font-size: 25px;
+    font-size: $subtitle-font-size;
     color: $highlight-color;
 }
 

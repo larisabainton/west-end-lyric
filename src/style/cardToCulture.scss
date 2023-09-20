@@ -19,12 +19,12 @@
     color: $base-color;
 
     a {
-        color: $accent-color;
         text-decoration: none;
         font-weight: bold;
+        background-color: #FFE3C7;
     }
 
     a:visited {
-        color: $accent-color;
+        color: $base-color;
     }
 }

@@ -71,13 +71,15 @@ const IndexPage = ({ data }) => {
     <div>
       <DonateButton className= "body_donate-button" />
       <Header />
-      <Cover />
-      <AboutUs />
-      <Events eventList={upcomingEvents} />
-      <OurTeam teamMembers={teamMembers}/>
-      <CardToCulture />
-      <Sponsors />
-      <Contact />
+      <main>
+        <Cover />
+        <AboutUs />
+        <Events eventList={upcomingEvents} />
+        <OurTeam teamMembers={teamMembers}/>
+        <CardToCulture />
+        <Sponsors />
+        <Contact />
+      </main>
       <footer>© {new Date().getFullYear()} Larisa Bainton</footer>
     </div>
   )

@@ -18,7 +18,7 @@
     background-color: $neutral-color;
     padding-right: 5%;
     padding-left: 5%;
-    font-size: 17px;
+    font-size: $small-font-size;
 
     li:last-child {
         border-bottom: 0px;
@@ -53,7 +53,7 @@
 
     /* month and day */
     .eventList_event--date {
-        font-size: 25px;
+        font-size: $small-font-size;
         font-weight: bold;
     }
 }
@@ -61,19 +61,19 @@
 .eventList_event--title {
     font-family: $title-font;
     color: $highlight-color;
-    font-size: 20px;
+    font-size: $subtitle-font-size;
     padding-left: 35px;
     flex: 2;
 }
 
 .eventList_event--location {
-    font-size: 17px;
+    font-size: $small-font-size;
     color: $base-color;
 }
 
 .eventList_event--time {
     color: $base-color;
-    font-size: 20px;
+    font-size: $small-font-size;
 }
 
 @media screen and (max-width: 800px) {
@@ -83,17 +83,16 @@
     }
 
     .eventList_event--title {
-        font-size: 16px;
         padding-left: 0px;
         flex: 2;
     }
 
     .eventList_event--location {
-        font-size: 16px;
+        font-size: $small-font-size;
     }
 
     .eventList_event--time {
-        font-size: 16px;
+        font-size: $small-font-size;
     }
 
     .eventList_event {
@@ -112,7 +111,7 @@
         }
 
         .eventList_event--date {
-            font-size: 16px;
+            font-size: $small-font-size;
         }
 
     }

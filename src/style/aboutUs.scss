@@ -1,7 +1,4 @@
 $section-height: 40vh;
-$h1-font-size: 56px;
-$h2-font-size: 20px;
-$text-font-size: 18px;
 
 .aboutUs {
     align-items: center;
@@ -21,7 +18,7 @@ $text-font-size: 18px;
     color: white;
     display: flex;
     font-family: $title-font;
-    font-size: $h1-font-size;
+    font-size: $title-font-size;
     justify-content: center;
 }
 
@@ -33,14 +30,14 @@ $text-font-size: 18px;
 
     .aboutUs_right-title {
         font-family: $title-font;
-        font-size: $h2-font-size;
+        font-size: $subtitle-font-size;
         color: $highlight-color;
         padding-bottom: 5%;
     }
 
     .aboutUs_right-text {
         color: $base-color;
-        font-size: $text-font-size;
+        font-size: $small-font-size;
         line-height: 2;
     }
 }

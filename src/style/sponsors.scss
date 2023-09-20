@@ -37,7 +37,7 @@
 .sponsors-name {
     color: $highlight-color;
     font-family: $title-font;
-    font-size: 25px;
+    font-size: $subtitle-font-size;;
     padding-top: 3%;
 }
 
@@ -52,6 +52,7 @@
 .sponsors-description {
     color: $base-color;
     line-height: 1.5;
+    font-size: $small-font-size;
 }
 
 @media screen and (max-width: 600px) {

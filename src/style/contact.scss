@@ -33,7 +33,7 @@ $contact-section-border: $base-color solid 1px;
 .contact-list_title {
     color: $highlight-color;
     font-family: $title-font;
-    font-size: 20px;
+    font-size: $subtitle-font-size;
 }
 
 .contact-list_text {
@@ -42,12 +42,12 @@ $contact-section-border: $base-color solid 1px;
 
 .contact-list_icon {
     color: $accent-color;
-    font-size: 25px;
+    font-size: $small-font-size;
     padding-bottom: 2%;
 }
 
 .contact-list_social-media-links {
-    font-size: 23px;
+    font-size: $subtitle-font-size;
     width: 100%;
     align-items: center;
     display: flex;
