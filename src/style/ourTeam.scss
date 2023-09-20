@@ -55,6 +55,10 @@
     object-fit: cover;
     object-position: center top;
     border-radius: 50%;
+
+    img {
+        object-position: center top;
+    }
 }
 
 @media screen and (max-width: 1200px) {
