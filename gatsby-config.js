@@ -9,27 +9,27 @@ module.exports = {
       {
         name: 'Jessica Bloch-Moisand',
         jobTitle: 'Creative Producer',
-        headshot: '../images/headshots/Jessica_headshot.jpg',
+        headshot: 'Jessica_headshot.jpg',
       },
       {
         name: 'Larisa Bainton',
         jobTitle: 'Director of Development',
-        headshot: '../images/headshots/Larisa_headshot.jpg',
+        headshot: 'Larisa_headshot.jpg',
       }, 
       {
         name: 'Hannah Shanefield',
         jobTitle: 'Director of Marketing & Media',
-        headshot: '../images/headshots/Hannah_headshot.jpg',
+        headshot: 'Hannah_headshot.jpg',
       },
       {
         name: 'Akela Franklin',
         jobTitle: 'Director of Education & Outreach',
-        headshot: '../images/headshots/Akela_headshot.jpg',
+        headshot: 'Akela_headshot.jpg',
       },
       {
         name: 'Julia Pottinger',
         jobTitle: 'Production Manager',
-        headshot: '../images/headshots/Julia_headshot.jpg',
+        headshot: 'Julia_headshot.jpg',
       }
     ]
   },
@@ -59,6 +59,13 @@ module.exports = {
             file: 'https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,800&display=swap',
           }
         ],
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `headshots`,
+        path: `${__dirname}/src/images/headshots/`,
       },
     },
     {
