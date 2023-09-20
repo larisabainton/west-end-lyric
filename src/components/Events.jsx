@@ -27,8 +27,8 @@ class Events extends React.Component {
             <div className="events" id="events">
                 <div className="events_title">Upcoming Performances</div>
                 <ul className="events_eventList">
-                    {this.eventList.map(({ date, month, year, time, location, title }) => (
-                        <li className="eventList_event" key={title}>
+                    {this.eventList.map(({ date, month, year, time, location, title }, i) => (
+                        <li className="eventList_event" key={`${title} - ${i}`}>
                                 <div className="eventList_event--date-container">
                                     <div className="eventList_event--date">{month} {date}</div>
                                     <div className="eventList_event--year">{year}</div> 
