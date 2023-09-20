@@ -1,17 +1,12 @@
 import React from 'react';
 import { StaticImage } from "gatsby-plugin-image";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook, faLinkedin, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import SocialMediaIcons from './socialMediaIcons';
 
 const WelcomeText = () => (
     <div className="cover_welcome-text">
         <div className="cover_welcome-text--small">Welcome to</div>
         <div className="cover_welcome-text--large">West End <br></br> Lyric</div>
-        <div className="cover_welcome-text_social-media-icons">
-            <a href="https://www.facebook.com/westendlyric/" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faFacebook} aria-label="Facebook link" /></a>
-            <a href="https://www.linkedin.com/company/west-end-lyric" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faLinkedin} aria-label="Linked in link"/></a>
-            <a href="https://www.instagram.com/westendlyric/" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faInstagram} aria-label="Instagram link"/></a>
-        </div>
+        <SocialMediaIcons className="cover_welcome-text_social-media-icons"/>
     </div>
     
 )
