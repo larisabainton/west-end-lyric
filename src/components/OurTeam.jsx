@@ -1,4 +1,22 @@
 import React from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+
+const getTeamMemberFormat = (teamMembers, imageSharpNodes) => { 
+    return teamMembers.map(({ name, jobTitle, headshot})=> {
+        // match the team member to the correct image node
+        const imageNode = imageSharpNodes.find(n => n.childImageSharp.gatsbyImageData.images.fallback.src.includes(headshot));
+        const image = getImage(imageNode);
+        return <div className="ourTeam_teamMember" key={name}>
+            <GatsbyImage image={image}  className="teamMember_headshot" alt="headshot"/>
+            <div className="teamMember_information">
+                <div className = "teamMember_name">{name}</div>
+                <div className = "teamMember_jobTitle">{jobTitle}</div>
+            </div>
+        </div>
+    });
+}
+
 
 /* 
 
@@ -9,33 +27,35 @@ interface teamMembers = Array[{
 }]
 
 */
+const OurTeam = ({teamMembers}) => {
+    const data = useStaticQuery(graphql`
+        query Headshots {
+            allFile(filter: {sourceInstanceName: {eq: "headshots"}}) {
+                edges {
+                    node {
+                      id
+                      childImageSharp {
+                        id
+                        gatsbyImageData
+                      }
+                    }
+                }
+            }
+        }
+    `);
 
-class OurTeam extends React.Component {
-    constructor({
-        teamMembers
-    }) {
-        super();
-        this.teamMembers = teamMembers;
+    const imageSharpNodes = data.allFile.edges.map(edge => edge.node);
 
-    }
-
-    render() {
-        return (<div className="ourTeam">
+    return (
+        <div className="ourTeam">
             <div className="ourTeam_title">Our Team</div>
             <div className="ourTeam_paragraph">Meet the women behind West End Lyric</div>
             <div className="ourTeam_teamMembers">
-                {this.teamMembers.map(({ name, jobTitle, headshot}) => (
-                    <div className="ourTeam_teamMember" key={name}>
-                        <img className="teamMember_headshot" src={headshot} alt=''/>
-                        <div className="teamMember_information">
-                            <div className = "teamMember_name">{name}</div>
-                            <div className = "teamMember_jobTitle">{jobTitle}</div>
-                        </div>
-                    </div>
-                ))}
+                {getTeamMemberFormat(teamMembers, imageSharpNodes)}
             </div>
-        </div>);
-    }
+        </div>
+    );
+
 }
 
 export default OurTeam;

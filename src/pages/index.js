@@ -1,12 +1,6 @@
 import * as React from "react";
+import { graphql } from "gatsby";
 import '../style/main.scss';
-
-import akelaHeadshot from '../images/headshots/Akela_headshot.jpg';
-import hannahHeadshot from '../images/headshots/Hannah_headshot.jpg';
-import jessicaHeadshot from '../images/headshots/Jessica_headshot.jpg';
-import juliaHeadshot from '../images/headshots/Julia_headshot.jpg';
-import larisaHeadshot from '../images/headshots/Larisa_headshot.jpg';
-
 
 import AboutUs from '../components/AboutUs';
 import CardToCulture from "../components/CardToCulture";
@@ -70,36 +64,9 @@ const upcomingEvents = [
   },
 ]
 
-const teamMembers = [
-  {
-    name: 'Jessica Bloch-Moisand',
-    jobTitle: 'Creative Producer',
-    headshot: jessicaHeadshot,
-  },
-  {
-    name: 'Larisa Bainton',
-    jobTitle: 'Director of Development',
-    headshot: larisaHeadshot,
-  }, 
-  {
-    name: 'Hannah Shanefield',
-    jobTitle: 'Director of Marketing & Media',
-    headshot: hannahHeadshot,
-  },
-  {
-    name: 'Akela Franklin',
-    jobTitle: 'Director of Education & Outreach',
-    headshot: akelaHeadshot,
-  },
-  {
-    name: 'Julia Pottinger',
-    jobTitle: 'Production Manager',
-    headshot: juliaHeadshot,
-  }
-]
+const IndexPage = ({ data }) => {
+  const { teamMembers } = data.site.siteMetadata;
 
-
-const IndexPage = () => {
   return (
     <div>
       <DonateButton className= "body_donate-button" />
@@ -111,6 +78,7 @@ const IndexPage = () => {
       <CardToCulture />
       <Sponsors />
       <Contact />
+      <footer>© {new Date().getFullYear()} Larisa Bainton</footer>
     </div>
   )
 }
@@ -118,3 +86,17 @@ const IndexPage = () => {
 export default IndexPage
 
 export const Head = () => <title>West End Lyric</title>
+
+export const query = graphql`
+  query HomePageQuery {
+    site {
+      siteMetadata {
+        teamMembers {
+          headshot
+          name
+          jobTitle
+        }
+      }
+    }
+  }
+`

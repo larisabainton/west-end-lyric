@@ -1,4 +1,5 @@
 import React from 'react';
+import { StaticImage } from "gatsby-plugin-image";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faLinkedin, faInstagram } from '@fortawesome/free-brands-svg-icons';
 
@@ -21,7 +22,9 @@ class Cover extends React.Component {
         <div className="cover">
             <div className="cover_background">
                 <div className="cover_color-block"></div>
-                <div className="cover_photo"></div>
+                <div className="cover_photo">
+                    <StaticImage src="../images/cover-photo.jpg" alt="Jessica Bloch performing" />
+                </div>
             </div>  
             <div className="cover_foreground">
                 <WelcomeText />

@@ -6,11 +6,11 @@
 
 .header {
     justify-content: space-between;
-    
-    img {
-        max-width: 200px;
-        padding-left: 10px;
-    }
+}
+
+.header_logo {
+    max-width: 200px;
+    margin-left: 10px;
 }
 
 .header_link-wrapper {
@@ -33,11 +33,10 @@
 @media screen and (max-width: 600px) {
     .header {
         font-size: 16px;
-        
+    }
 
-        img {
-            width: 100px;
-        }
+    .header_logo {
+        max-width: 100px;
     }
 
     .header_link {

@@ -36,6 +36,7 @@
     padding-left: 3%;
     padding-top: 3%;
     padding-bottom: 3%;
+    margin-top: 1em;
 }   
 
 .teamMember_name {
@@ -55,6 +56,10 @@
     object-fit: cover;
     object-position: center top;
     border-radius: 50%;
+
+    img {
+        object-position: center top;
+    }
 }
 
 @media screen and (max-width: 1200px) {

@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import logo from '../images/logo.png'
+import { StaticImage } from 'gatsby-plugin-image';
 import DonateButton from "./donateButton";
 
 class Header extends React.Component {
     render() {
         return (
         <div className="header" id="home">
-            <img src={logo} alt='West End Lyric Logo' className="header_logo"/>
+            <StaticImage src='../images/logo.png' alt='West End Lyric Logo' className="header_logo"/>
             <div className="header_link-wrapper">
                 <DonateButton className="header_donate-button"/>
                 <Link to="/#home" className="header_link">Home</Link>
