@@ -64,7 +64,6 @@ const upcomingEvents = [
   },
 ]
 
-
 const IndexPage = ({ data }) => {
   const { teamMembers } = data.site.siteMetadata;
 
@@ -79,6 +78,7 @@ const IndexPage = ({ data }) => {
       <CardToCulture />
       <Sponsors />
       <Contact />
+      <footer>© {new Date().getFullYear()} Larisa Bainton</footer>
     </div>
   )
 }

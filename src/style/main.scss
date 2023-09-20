@@ -24,3 +24,13 @@ body {
     min-height: 100vh;
     position: relative;
 }
+
+footer {
+    display: flex;
+    justify-content: center;
+    color: white;
+    background-color: $base-color;
+    width: 100%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
