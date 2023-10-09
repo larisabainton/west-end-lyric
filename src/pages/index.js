@@ -43,7 +43,7 @@ const upcomingEvents = [
     month: "Apr",
     year: 2024,
     time: '7pm',
-    location: "Boston Synagogue",
+    location: "Somerville Music Spaces",
     title: "L'amico Fritz",
   },
   {
