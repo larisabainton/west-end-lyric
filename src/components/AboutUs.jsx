@@ -2,7 +2,7 @@ import React from 'react';
 
 const heading = "Our Story";
 const title = "Get to Know Us";
-const text = "West End Lyric is a new performing arts collective in Boston’s West End, receiving fiscal sponsorship through Backroom Boston with in-kind support at The Boston Synagogue.";
+const text = "West End Lyric is an all women led, Boston-based performing arts collective that seeks to bring a diverse cultural community together through music. We employ our core values - inclusivity, accessibility, community artistry and support through opportunity - in order to inspire, educate and provide a space for artists and audiences alike to share in high quality artistic expression in Boston’s West End.";
 
 class AboutUs extends React.Component {
     render() {

@@ -1,4 +1,4 @@
-$section-height: 40vh;
+$section-height: 50vh;
 
 .aboutUs {
     align-items: center;
@@ -9,7 +9,6 @@ $section-height: 40vh;
 .aboutUs_left,
 .aboutUs_right {
     width: 50%;
-    height: 100%;
 }
 
 .aboutUs_left {
@@ -20,13 +19,14 @@ $section-height: 40vh;
     font-family: $title-font;
     font-size: $title-font-size;
     justify-content: center;
+    height: 100%;
 }
 
 .aboutUs_right {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    padding-left: 5%;
+    padding: 5%;
 
     .aboutUs_right-title {
         font-family: $title-font;
