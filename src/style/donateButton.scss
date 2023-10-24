@@ -7,13 +7,14 @@
     padding-top: 1.5vh;
     padding-bottom: 1.5vh;
     font-size: $small-font-size;
+    border: none;
 }
 
-#donate-button:hover {
+.donate-button:hover {
     background-color: $highlight-color--light;
 }
 
-.header_donate-button {
+.header_donate-button-form {
     margin-right: 2%;
 }
 
