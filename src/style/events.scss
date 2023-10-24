@@ -27,35 +27,48 @@
 
 /* each individual event */
 .eventList_event {
-    border-bottom: 2px solid $accent-color;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    border-bottom: 2px solid $accent-color;
     padding-top: 32px;
     padding-bottom: 32px;
+}
+
+/* container for date, month, year, and time*/
+.eventList_event--calendar {
+    display: flex;
+    flex-direction: row;
+}
+
+/* container for date, month, year */
+.eventList_event--date-container {
+    justify-content: center;
+    display: flex;
     align-items: center;
+    flex-direction: column;
+    color: $base-color;
+    width: 100px;
+}
+
+/* month and day */
+.eventList_event--date {
+    font-size: $small-font-size;
+    font-weight: bold;
+}
+
+.eventList_event_top-row,
+.eventList_event_bottom-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.eventList_event_top-row {
     justify-content: space-between;
+}
 
-    /* container for date, month, year, and time*/
-    .eventList_event--calendar {
-        display: flex;
-        flex-direction: row;
-    }
-
-    /* container for date, month, year */
-    .eventList_event--date-container {
-        justify-content: center;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        color: $base-color;
-        width: 100px;
-    }
-
-    /* month and day */
-    .eventList_event--date {
-        font-size: $small-font-size;
-        font-weight: bold;
-    }
+.eventList_event_bottom-row {
+    justify-content: center;
 }
 
 .eventList_event--title {
@@ -74,6 +87,23 @@
 .eventList_event--time {
     color: $base-color;
     font-size: $small-font-size;
+}
+
+.eventList_event--tickets {
+    background-color: $accent-color;
+    color: white;
+    font-family: $title-font;
+    font-size: $subtitle-font-size;
+    margin-top: 2.5vh;
+    padding: 1%;
+
+    a {
+        text-decoration: none;
+    }
+
+    a:visited {
+        color: white;
+    }
 }
 
 @media screen and (max-width: 800px) {
@@ -97,22 +127,22 @@
 
     .eventList_event {
         width: 100%;
+    }
+
+    .eventList_event_top-row {
         flex-direction: column;
         text-align: center;
     }
 
-    .eventList_event {
-        .eventList_event--date-container {
-            flex-direction: row;
-        }
+    .eventList_event--date-container {
+        flex-direction: row;
+    }
 
-        .eventList_event--year {
-            padding-left: 6%;
-        }
+    .eventList_event--year {
+        padding-left: 6%;
+    }
 
-        .eventList_event--date {
-            font-size: $small-font-size;
-        }
-
+    .eventList_event--date {
+        font-size: $small-font-size;
     }
 }

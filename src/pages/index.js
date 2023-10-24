@@ -21,6 +21,7 @@ const upcomingEvents = [
     time: "7pm",
     location: "Somerville Music Spaces",
     title: "The Card Game / Coffee Cantata ",
+    ticketsLink: "https://www.eventbrite.com/e/the-card-game-the-coffee-cantata-double-bill-at-somerville-music-spaces-tickets-738450444157?aff=ebdssbdestsearch",
   },
   {
     date: 19,
@@ -29,6 +30,7 @@ const upcomingEvents = [
     time: "3pm",
     location: "Boston Synagogue",
     title: "The Card Game / Coffee Cantata ",
+    ticketsLink: "https://www.eventbrite.com/e/the-card-game-the-coffee-cantata-double-bill-at-the-boston-synagogue-tickets-730824434557?aff=ebdssbdestsearch",
   },
   {
     date: 17,
