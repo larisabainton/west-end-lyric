@@ -48,7 +48,6 @@ class Events extends React.Component {
                                 </div>
                                 <div className="eventList_event--time">{time}</div>
                                 <div className="eventList_event--title">{title}</div>
-                                
                                 <div className="eventList_event--location">{location}</div>
                             </div>
                             <div className="eventList_event_bottom-row">
