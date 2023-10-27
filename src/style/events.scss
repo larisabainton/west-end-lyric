@@ -96,14 +96,15 @@
     font-size: $subtitle-font-size;
     margin-top: 2.5vh;
     padding: 1%;
+}
 
-    a {
-        text-decoration: none;
-    }
+.eventList_event--tickets a {
+    text-decoration: none;
+}
 
-    a:visited {
-        color: white;
-    }
+.eventList_event--tickets a,
+.eventList_event--tickets a:visited {
+    color: white;
 }
 
 @media screen and (max-width: 800px) {
