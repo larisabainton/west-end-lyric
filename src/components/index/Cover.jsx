@@ -1,6 +1,6 @@
 import React from 'react';
 import { StaticImage } from "gatsby-plugin-image";
-import SocialMediaIcons from './socialMediaIcons';
+import SocialMediaIcons from '../socialMediaIcons';
 
 const WelcomeText = () => (
     <div className="cover_welcome-text">
@@ -18,7 +18,7 @@ class Cover extends React.Component {
             <div className="cover_background">
                 <div className="cover_color-block"></div>
                 <div className="cover_photo">
-                    <StaticImage src="../images/cover-photo.jpg" alt="Jessica Bloch performing" />
+                    <StaticImage src="../../images/cover-photo.jpg" alt="Jessica Bloch performing" />
                 </div>
             </div>  
             <div className="cover_foreground">
