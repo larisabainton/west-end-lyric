@@ -1,14 +1,16 @@
 @import 'constants';
 
-@import 'aboutUs';
-@import 'cardToCulture';
-@import 'contact';
-@import 'cover';
+@import 'index/aboutUs';
+@import 'index/cardToCulture';
+@import 'index/contact';
+@import 'index/cover';
+@import 'index/events';
+@import 'index/ourTeam';
+@import 'index/sponsors';
+
 @import 'donateButton';
-@import 'events';
-@import 'header';
-@import 'ourTeam';
-@import 'sponsors';
+@import 'layout';
+
 
 html {
     scroll-behavior: smooth;
@@ -22,6 +24,11 @@ a {
     text-decoration: none;
 }
 
+ul {
+    list-style-type: none;
+    margin: 0px;
+}
+
 body {
     font-family: $base-font;
     font-size: $small-font-size;
@@ -30,12 +37,3 @@ body {
     position: relative;
 }
 
-footer {
-    display: flex;
-    justify-content: center;
-    color: white;
-    background-color: $base-color;
-    width: 100%;
-    padding-top: 1%;
-    padding-bottom: 1%;
-}
