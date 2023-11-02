@@ -11,6 +11,8 @@
 @import 'donateButton';
 @import 'layout';
 
+@import 'about';
+
 
 html {
     scroll-behavior: smooth;
@@ -33,7 +35,21 @@ body {
     font-family: $base-font;
     font-size: $small-font-size;
     margin: 0px;
-    min-height: 100vh;
     position: relative;
 }
 
+.global-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 2;
+}
+
+.section-title {
+    color: $highlight-color;
+    font-size: $subtitle-font-size;
+    font-family: $title-font;
+}
