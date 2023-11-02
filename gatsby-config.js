@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
@@ -5,33 +9,6 @@ module.exports = {
   pathPrefix: '/west-end-lyric', // https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/how-gatsby-works-with-github-pages/
   siteMetadata: {
     siteUrl: `https://www.westendlyric.com`,
-    teamMembers: [
-      {
-        name: 'Jessica Bloch-Moisand',
-        jobTitle: 'Creative Producer',
-        headshot: 'Jessica_headshot.jpg',
-      },
-      {
-        name: 'Larisa Bainton',
-        jobTitle: 'Director of Development',
-        headshot: 'Larisa_headshot.jpg',
-      }, 
-      {
-        name: 'Hannah Shanefield',
-        jobTitle: 'Director of Marketing & Media',
-        headshot: 'Hannah_headshot.jpg',
-      },
-      {
-        name: 'Akela Franklin',
-        jobTitle: 'Director of Education & Outreach',
-        headshot: 'Akela_headshot.jpg',
-      },
-      {
-        name: 'Julia Pottinger',
-        jobTitle: 'Production Manager',
-        headshot: 'Julia_headshot.jpg',
-      }
-    ]
   },
   plugins: [
     'gatsby-plugin-sass',
@@ -75,6 +52,15 @@ module.exports = {
         name: `images`,
         // Path to the directory
         path: `${__dirname}/src/images/`,
+      },
+    },
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: `a6luxfg6aqcb`,
+        environment: "master",
+        // Learn about environment variables: https://gatsby.dev/env-vars
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       },
     },
   ],

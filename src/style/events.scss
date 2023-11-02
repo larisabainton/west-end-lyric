@@ -28,25 +28,22 @@
 /* each individual event */
 .eventList_event {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     border-bottom: 2px solid $accent-color;
     padding-top: 32px;
     padding-bottom: 32px;
+    align-items: center;
+    justify-content:space-between;
 }
 
-/* container for date, month, year, and time*/
-.eventList_event--calendar {
-    display: flex;
-    flex-direction: row;
-}
-
-/* container for date, month, year */
+/* container for date, month, year, time */
 .eventList_event--date-container {
     justify-content: center;
     display: flex;
     align-items: center;
     flex-direction: column;
     color: $base-color;
+    gap: .4vh;
     width: 100px;
 }
 
@@ -54,21 +51,6 @@
 .eventList_event--date {
     font-size: $small-font-size;
     font-weight: bold;
-}
-
-.eventList_event_top-row,
-.eventList_event_bottom-row {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.eventList_event_top-row {
-    justify-content: space-between;
-}
-
-.eventList_event_bottom-row {
-    justify-content: center;
 }
 
 .eventList_event--title {
@@ -94,18 +76,20 @@
     color: white;
     font-family: $title-font;
     font-size: $subtitle-font-size;
-    margin-top: 2.5vh;
     padding: 1%;
-}
-
-.eventList_event--tickets a {
-    text-decoration: none;
 }
 
 .eventList_event--tickets a,
 .eventList_event--tickets a:visited {
     color: white;
 }
+
+.eventList_event--location a,
+.eventList_event--location a:hover,
+.eventList_event--location a:visited {
+    color: $base-color;
+}
+
 
 @media screen and (max-width: 800px) {
     .events_title {
@@ -128,19 +112,9 @@
 
     .eventList_event {
         width: 100%;
-    }
-
-    .eventList_event_top-row {
         flex-direction: column;
         text-align: center;
-    }
-
-    .eventList_event--date-container {
-        flex-direction: row;
-    }
-
-    .eventList_event--year {
-        padding-left: 6%;
+        gap: .75vh;
     }
 
     .eventList_event--date {

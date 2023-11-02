@@ -1,19 +1,29 @@
+import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 
-/* 
- 
-interface eventList = Array[{
-    date: number,
-    month: string,
-    year: number,
-    time: string,
-    location: string,
-    title: string,
-    ticketsLink: string
-}]
+const getDate = eventDate => {
+    const date = new Date(eventDate);
 
-*/
+    const dateOptions = {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+    }
 
+    const timeOptions = {
+        hour12: true,
+        hour: 'numeric',
+        minute: 'numeric',
+    }
+    return (
+        <div className="eventList_event--date-container">
+            <div className="eventList_event--date">{date.toLocaleDateString("en-US", dateOptions)}</div>
+            <div className="eventList_event--time">{date.toLocaleTimeString("en-US", timeOptions)}</div> 
+        </div>
+        
+    )
+    
+}
 
 const getTickets = ticketsLink => {
     if (ticketsLink) {
@@ -25,40 +35,52 @@ const getTickets = ticketsLink => {
     }
 }
 
-class Events extends React.Component {
-    constructor({
-        eventList
-    }) {
-        super();
-        this.eventList = eventList;
+const showTicketsOrVenue = (ticketsLink, venue) => {
+    if (ticketsLink) {
+        return getTickets(ticketsLink)
+    } else {
+        return (
+        <div className="eventList_event--location">
+            <a href={venue.website} target="_blank" rel="noreferrer">{venue.name}</a>
+        </div>)
+    }
+}
 
-    }
-    
-    render() {
-        return (<div>
-            <div className="events" id="events">
-                <div className="events_title">Upcoming Performances</div>
-                <ul className="events_eventList">
-                    {this.eventList.map(({ date, month, year, time, location, title, ticketsLink }, i) => (
-                        <li className="eventList_event" key={`${title} - ${i}`}>
-                            <div className="eventList_event_top-row">
-                                <div className="eventList_event--date-container">
-                                    <div className="eventList_event--date">{month} {date}</div>
-                                    <div className="eventList_event--year">{year}</div> 
-                                </div>
-                                <div className="eventList_event--time">{time}</div>
-                                <div className="eventList_event--title">{title}</div>
-                                <div className="eventList_event--location">{location}</div>
-                            </div>
-                            <div className="eventList_event_bottom-row">
-                                {getTickets(ticketsLink)}
-                            </div>
-                        </li>
-                    ))}
-                    </ul>
-            </div>
-        </div>);
-    }
+const Events = () => {
+    const eventData = useStaticQuery(graphql`
+        query EventDataQuery {
+            allContentfulEvent {
+                nodes {
+                    ticketsLink
+                    eventTitle
+                    eventDate
+                    venue {
+                        name
+                        website
+                    }
+                }
+            }
+        }
+    `)
+
+    const eventList = eventData.allContentfulEvent.nodes
+        /* sort events by date */
+        .sort((node1, node2) => new Date(node1.eventDate) - new Date(node2.eventDate));
+
+    return (<div>
+        <div className="events" id="events">
+            <div className="events_title">Upcoming Performances</div>
+            <ul className="events_eventList">
+                {eventList.map(({ eventDate, venue, eventTitle, ticketsLink }, i) => (
+                    <li className="eventList_event" key={`${eventTitle} - ${i}`}>
+                        {getDate(eventDate)}
+                        <div className="eventList_event--title">{eventTitle}</div>
+                        {showTicketsOrVenue(ticketsLink, venue)}
+                    </li>
+                ))}
+            </ul>
+        </div>
+    </div>);
 }
 
 export default Events;

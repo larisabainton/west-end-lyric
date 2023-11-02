@@ -1,5 +1,4 @@
 import * as React from "react";
-import { graphql } from "gatsby";
 import '../style/main.scss';
 
 import AboutUs from '../components/AboutUs';
@@ -13,62 +12,7 @@ import OurTeam from '../components/OurTeam';
 import Sponsors from '../components/Sponsors';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 
-const upcomingEvents = [
-  {
-    date: 17,
-    month: "Nov",
-    year: 2023,
-    time: "7pm",
-    location: "Somerville Music Spaces",
-    title: "The Card Game / Coffee Cantata ",
-    ticketsLink: "https://www.eventbrite.com/e/the-card-game-the-coffee-cantata-double-bill-at-somerville-music-spaces-tickets-738450444157?aff=ebdssbdestsearch",
-  },
-  {
-    date: 19,
-    month: "Nov",
-    year: 2023,
-    time: "3pm",
-    location: "Boston Synagogue",
-    title: "The Card Game / Coffee Cantata ",
-    ticketsLink: "https://www.eventbrite.com/e/the-card-game-the-coffee-cantata-double-bill-at-the-boston-synagogue-tickets-730824434557?aff=ebdssbdestsearch",
-  },
-  {
-    date: 17,
-    month: "Dec",
-    year: 2023,
-    time: '4pm',
-    location: "Boston Synagogue",
-    title: "Women of Tin Pan Alley Cabaret",
-  },
-  {
-    date: 5,
-    month: "Apr",
-    year: 2024,
-    time: '7pm',
-    location: "Somerville Music Spaces",
-    title: "L'amico Fritz",
-  },
-  {
-    date: 7,
-    month: "Apr",
-    year: 2024,
-    time: '3pm',
-    location: "Boston Synagogue",
-    title: "L'amico Fritz",
-  },
-  {
-    date: 5,
-    month: "May",
-    year: 2024,
-    time: '3pm',
-    location: "Boston Synagogue",
-    title: "Out of Darkness / We Will Outlive Them",
-  },
-]
-
-const IndexPage = ({ data }) => {
-  const { teamMembers } = data.site.siteMetadata;
-
+const IndexPage = () => {
   return (
     <div>
       <DonateButton className= "body_donate-button" />
@@ -76,8 +20,8 @@ const IndexPage = ({ data }) => {
       <main>
         <Cover />
         <AboutUs />
-        <Events eventList={upcomingEvents} />
-        <OurTeam teamMembers={teamMembers}/>
+        <Events />
+        <OurTeam />
         <CardToCulture />
         <Sponsors />
         <Contact />
@@ -90,17 +34,3 @@ const IndexPage = ({ data }) => {
 export default IndexPage
 
 export const Head = () => <title>West End Lyric</title>
-
-export const query = graphql`
-  query HomePageQuery {
-    site {
-      siteMetadata {
-        teamMembers {
-          headshot
-          name
-          jobTitle
-        }
-      }
-    }
-  }
-`
