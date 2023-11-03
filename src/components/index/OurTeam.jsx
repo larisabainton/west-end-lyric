@@ -21,6 +21,7 @@ const OurTeam = () => {
         allContentfulTeamMember {
           nodes {
               jobTitle
+              orderNumber
               teamMemberName
               teamMemberPhoto {
                 gatsbyImageData
@@ -30,7 +31,7 @@ const OurTeam = () => {
       }
     `)
 
-    const teamMembers = teamData.allContentfulTeamMember.nodes;
+    const teamMembers = teamData.allContentfulTeamMember.nodes.sort((node1, node2) => node1.orderNumber - node2.orderNumber);
 
     return (
         <div className="ourTeam">

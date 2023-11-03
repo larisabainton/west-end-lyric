@@ -1,13 +1,91 @@
+// our mission
 .our-mission {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    padding-top: 2vh;
-    padding-bottom: 2vh;
-    padding-left: 2vw;
-    padding-right: 2vw;
-
+    padding: 2vh 5vw 2vh 5vw;
     line-height: 1.5;
+}
+
+// our team
+.our-team {
+    padding-right: 10vw;
+    padding-left: 10vw;
+}
+
+.our-team li {
+    list-style-type: none;
+}
+
+.our-team .section-title {
+    padding-top: 2vh;
+}
+
+.teamMembers-list {
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+    padding: 5vh 0 5vh 0;
+}
+
+.teamMembers-list-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3vh;
+}
+
+.teamMembers-list-item_name {
+    color: $highlight-color;
+    font-size: $subtitle-font-size;
+    font-family: $title-font;
+}
+
+.teamMembers-list-item_job {
+    color: $base-color;
+    font-weight: bold;
+    font-size: $small-font-size;
+}
+
+
+.teamMembers-list-item_bio {
+    flex: 2;
+
+    p {
+        margin: 0px;
+        line-height: 1.25;
+    }
+}
+
+.teamMembers-list-item_info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+}
+
+.teamMembers-list-item_photo {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    object-position: center top;
+
+    img {
+        object-position: center top;
+    }
+}
+
+// our sponsors
+.our-sponsors_list {
+    display: flex;
+    flex-direction: column;
+    padding: 5vh 5vw 5vh 5vw;
+}
+
+@media screen and (max-width: 600px) {
+    .teamMembers-list-item {
+        flex-direction: column;
+    }
 }

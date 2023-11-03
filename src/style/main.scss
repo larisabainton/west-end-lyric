@@ -49,6 +49,13 @@ main {
 }
 
 .section-title {
+    color: $base-color;
+    font-size: $title-font-size;
+    font-family: $title-font;
+    text-align: center;
+}
+
+.section-subtitle {
     color: $highlight-color;
     font-size: $subtitle-font-size;
     font-family: $title-font;

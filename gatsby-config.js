@@ -29,7 +29,7 @@ module.exports = {
         web: [
           {
             name: `Lato`,
-            file: 'https://fonts.googleapis.com/css2?family=Lato&display=swap',
+            file: 'https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap',
           },
           {
             name: 'Fraunces',

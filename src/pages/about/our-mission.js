@@ -24,9 +24,9 @@ const OurMissionPage = () => {
         <Layout>
             <main>
                 <div className="our-mission">
-                    <div className="section-title">Our Mission</div>
+                    <div className="section-subtitle">Our Mission</div>
                     {renderRichText(shortDescription)}
-                    <div className="section-title">Our Core Values</div>
+                    <div className="section-subtitle">Our Core Values</div>
                     {renderRichText(longDescription)}
                 </div>
             </main>
