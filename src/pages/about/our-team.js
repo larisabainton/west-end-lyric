@@ -14,7 +14,7 @@ const OurTeamPage = () => {
               jobTitle
               orderNumber
               pronouns
-              teamMemberName
+              name
               teamMemberPhoto {
                 gatsbyImageData
               }
@@ -37,12 +37,12 @@ const OurTeamPage = () => {
                 <div className="our-team">
                     <div className="section-title">Our Team</div>
                     <ul className="teamMembers-list">
-                    {teamMembers.map(({ teamMemberName, jobTitle, teamMemberPhoto, bio}) => {
+                    {teamMembers.map(({ name, jobTitle, teamMemberPhoto, bio}) => {
                         return (
-                            <li className="teamMembers-list-item" key={teamMemberName}>
+                            <li className="teamMembers-list-item" key={name}>
                                 <div className="teamMembers-list-item_info">
-                                    <GatsbyImage className="teamMembers-list-item_photo" image={getImage(teamMemberPhoto)} alt={`${teamMemberName} Headshot`}/>
-                                    <div className="teamMembers-list-item_name">{teamMemberName}</div>
+                                    <GatsbyImage className="teamMembers-list-item_photo" image={getImage(teamMemberPhoto)} alt={`${name} Headshot`}/>
+                                    <div className="teamMembers-list-item_name">{name}</div>
                                     <div className="teamMembers-list-item_job">{jobTitle}</div>
                                 </div>
                                 <div className="teamMembers-list-item_bio">{renderRichText(bio)}</div>

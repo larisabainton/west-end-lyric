@@ -3,12 +3,12 @@ import { useStaticQuery, graphql } from 'gatsby';
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const getTeamMemberFormat = (teamMembers) => { 
-    return teamMembers.map(({ teamMemberName, jobTitle, teamMemberPhoto })=> {
+    return teamMembers.map(({ name, jobTitle, teamMemberPhoto })=> {
         const image = getImage(teamMemberPhoto);
-        return <div className="ourTeam_teamMember" key={teamMemberName}>
+        return <div className="ourTeam_teamMember" key={name}>
             <GatsbyImage image={image}  className="teamMember_headshot" alt="headshot"/>
             <div className="teamMember_information">
-                <div className = "teamMember_name">{teamMemberName}</div>
+                <div className = "teamMember_name">{name}</div>
                 <div className = "teamMember_jobTitle">{jobTitle}</div>
             </div>
         </div>
@@ -22,7 +22,7 @@ const OurTeam = () => {
           nodes {
               jobTitle
               orderNumber
-              teamMemberName
+              name
               teamMemberPhoto {
                 gatsbyImageData
               }
