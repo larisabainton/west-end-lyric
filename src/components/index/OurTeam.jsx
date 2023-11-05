@@ -3,8 +3,10 @@ import { useStaticQuery, graphql } from 'gatsby';
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const getTeamMemberFormat = (teamMembers) => { 
-    return teamMembers.map(({ name, jobTitle, teamMemberPhoto })=> {
-        const image = getImage(teamMemberPhoto);
+    return teamMembers.map(({ name, team_member, headshot })=> {
+        const image = getImage(headshot);
+        const jobTitle = team_member[0].jobTitle;
+
         return <div className="ourTeam_teamMember" key={name}>
             <GatsbyImage image={image}  className="teamMember_headshot" alt="headshot"/>
             <div className="teamMember_information">
@@ -18,20 +20,26 @@ const getTeamMemberFormat = (teamMembers) => {
 const OurTeam = () => {
     const teamData = useStaticQuery(graphql`
     query TeamDataQuery {
-        allContentfulTeamMember {
-          nodes {
-              jobTitle
-              orderNumber
+        allContentfulPersonnel(
+            filter: {team_member: {elemMatch: {orderNumber: {ne: null}}}}
+            sort: {team_member: {orderNumber: ASC}}
+        ) {
+            nodes {
+              team_member {
+                jobTitle
+                orderNumber
+              }
               name
-              teamMemberPhoto {
+              headshot {
                 gatsbyImageData
               }
+            }
           }
-        }
       }
     `)
 
-    const teamMembers = teamData.allContentfulTeamMember.nodes.sort((node1, node2) => node1.orderNumber - node2.orderNumber);
+    const teamMembers = teamData.allContentfulPersonnel.nodes;
+    console.log(teamMembers)
 
     return (
         <div className="ourTeam">

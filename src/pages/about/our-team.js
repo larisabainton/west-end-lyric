@@ -9,26 +9,29 @@ import Layout from '../../components/layout';
 const OurTeamPage = () => {
     const teamData = useStaticQuery(graphql`
     query TeamPageQuery {
-        allContentfulTeamMember {
-          nodes {
-              jobTitle
-              orderNumber
-              pronouns
-              name
-              teamMemberPhoto {
-                gatsbyImageData
+        allContentfulPersonnel(
+            filter: {team_member: {elemMatch: {orderNumber: {ne: null}}}}
+            sort: {team_member: {orderNumber: ASC}}
+        ) {
+            nodes {
+              team_member {
+                jobTitle
+                orderNumber
               }
+              name
               bio {
                 raw
+              }
+              headshot {
+                gatsbyImageData
+              }
             }
           }
-        }
       }
     `)
 
     // get teamMembers sorted by orderNumber
-    const teamMembers = teamData.allContentfulTeamMember.nodes.sort((node1, node2) => node1.orderNumber - node2.orderNumber);
-
+    const teamMembers = teamData.allContentfulPersonnel.nodes;
     console.log(teamMembers);
     
     return(
@@ -37,11 +40,13 @@ const OurTeamPage = () => {
                 <div className="our-team">
                     <div className="section-title">Our Team</div>
                     <ul className="teamMembers-list">
-                    {teamMembers.map(({ name, jobTitle, teamMemberPhoto, bio}) => {
+                    {teamMembers.map(({ name, team_member, headshot, bio}) => {
+                        const jobTitle = team_member[0].jobTitle;
+
                         return (
                             <li className="teamMembers-list-item" key={name}>
                                 <div className="teamMembers-list-item_info">
-                                    <GatsbyImage className="teamMembers-list-item_photo" image={getImage(teamMemberPhoto)} alt={`${name} Headshot`}/>
+                                    <GatsbyImage className="teamMembers-list-item_photo" image={getImage(headshot)} alt={`${name} Headshot`}/>
                                     <div className="teamMembers-list-item_name">{name}</div>
                                     <div className="teamMembers-list-item_job">{jobTitle}</div>
                                 </div>
