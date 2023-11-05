@@ -1,7 +1,26 @@
 import React from "react";
+import { graphql, useStaticQuery } from "gatsby";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { renderRichText } from 'gatsby-source-contentful/rich-text';
 
 import Layout from "../../components/layout.jsx";
-import { graphql, useStaticQuery } from "gatsby";
+
+const getStaff = staffArray => {
+    if (staffArray && staffArray.length) {
+        return staffArray.map(staff => {
+            const name = staff.fields.person.en_US.fields.name.en_US;
+            const title = staff.fields.title.en_US;
+            console.log(name, title)
+        })
+
+
+
+        return (
+            <div className="staff-list">
+            </div>
+        )
+    }
+}
 
 const getCast = roles => {
     if (roles) {
@@ -23,6 +42,28 @@ const getCast = roles => {
             </div>
         )
     }
+}
+
+const getTickets = ticketsLink => {
+    if (ticketsLink) {
+        return (
+        <div className="event_tickets">
+            <a target="_blank" rel="noreferrer" href={ticketsLink}>Get Tickets</a>
+        </div>
+        )
+    }
+}
+
+const getEventDescription = (longDescription, shortDescription) => {
+    let text = '';
+
+    if (longDescription) {
+        text = renderRichText(longDescription)
+    } else if (shortDescription) {
+        text = renderRichText(shortDescription)
+    }
+    
+    return <div className="event_description">{text}</div>
 }
 
 const getDate = eventDate => {
@@ -49,71 +90,91 @@ const getDate = eventDate => {
     
 }
 
-const getTickets = ticketsLink => {
-    if (ticketsLink) {
-        return (
-            <div className="event_tickets">
-                <a target="_blank" rel="noreferrer" href={ticketsLink}>Get Tickets</a>
-            </div>
-        )
-    }
+const getCoverPhoto = productionPhoto => {
+    return productionPhoto && <GatsbyImage image= {getImage(productionPhoto)} alt=""/>
 }
 
 const EventsPage = () => {
     const eventData = useStaticQuery(graphql`
     query EventPageQuery {
-        allContentfulEvent {
-          nodes {
-            eventTitle
-            eventDate
-            ticketsLink
-            longDescription {
-                raw
-            }
-            shortDescription {
-                raw
-            }
-            venue {
-              name
-              website
-            }
-            role {
-                roleName
+        allContentfulEvent(sort: {eventDate: ASC}) {
+            nodes {
+              production {
+                name
+                longDescription {
+                  raw
+                }
+                shortDescription {
+                  raw
+                }
+                staff {
+                  fields {
+                    person {
+                      en_US {
+                        fields {
+                          name {
+                            en_US
+                          }
+                        }
+                      }
+                    }
+                    title {
+                      en_US
+                    }
+                  }
+                }
+                productionPhoto {
+                  gatsbyImageData
+                  title
+                }
+              }
+              eventDate
+              ticketsLink
+              venue {
+                name
+                website
+              }
+              roles {
                 castMember {
                   ... on ContentfulPersonnel {
                     name
                   }
-                  ... on ContentfulTeamMember {
-                    name
-                  }
                 }
+                roleName
               }
+            }
           }
-        }
-      }
-    `)
+    }`)
 
     const eventList = eventData.allContentfulEvent.nodes
-        /* sort events by date */
-        .sort((node1, node2) => new Date(node1.eventDate) - new Date(node2.eventDate));
     
     return (
         <Layout>
             <main>
                 <div className="events-page">
-                    <div className="events-page_title">Upcoming Events</div>
-                    <ul className="events-page_eventlist">
-                        {eventList.map(({ eventDate, venue, eventTitle, ticketsLink, role }, i) => (
-                            <li className="event" key={`${eventTitle} - ${i}`}>
-                                {getDate(eventDate)}
-                                <div className="event_title">{eventTitle}</div>
-                                <div className="event_location">
-                                    <a href={venue.website} target="_blank" rel="noreferrer">{venue.name}</a>
-                                </div>
-                                {getTickets(ticketsLink)}
-                                {getCast(role)}
-                            </li>
-                        ))}
+                    <div className="section-title">Upcoming Events</div>
+                    <ul className="events-page_eventlist"> 
+                        {eventList.map(({ eventDate, production, roles, ticketsLink, venue }, i) => {
+                            if (!production) {
+                                return (<li key={i}></li>)
+                            }
+
+                            const { shortDescription, longDescription, name, productionPhoto, staff } = production[0];
+
+                            return (
+                                <li className="event" key={`${name} - ${i}`}>
+                                    {getCoverPhoto(productionPhoto)}
+                                    <div className="event_title">{name}</div>
+                                    {getDate(eventDate)}
+                                    <div className="event_location">
+                                        <a href={venue.website} target="_blank" rel="noreferrer">{venue.name}</a>
+                                    </div>
+                                    {getEventDescription(longDescription, shortDescription)}
+                                    {getTickets(ticketsLink)}
+                                    {getStaff(staff)}
+                                    {getCast(roles)}
+                                </li>
+                        )})}
                     </ul>
                 </div>
             </main>
