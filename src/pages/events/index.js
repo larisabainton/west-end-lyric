@@ -7,39 +7,40 @@ import Layout from "../../components/layout.jsx";
 
 const getStaff = staffArray => {
     if (staffArray && staffArray.length) {
-        return staffArray.map(staff => {
-            const name = staff.fields.person.en_US.fields.name.en_US;
-            const title = staff.fields.title.en_US;
-            console.log(name, title)
-        })
-
-
-
         return (
-            <div className="staff-list">
+            <div className="staff-info">
+                <div className="staff-info_name">Direction</div>
+                <ul>
+                {staffArray.map((staff, i) => {
+                    const name = staff.personnel.name;
+                    const title = staff.title;
+                    return (
+                        <li className="staff-member_info" key={i}>
+                            <div className="staff-member_title">{title}</div>
+                            <div className="staff-member_name">{name}</div>
+                        </li>
+                )})}
+                </ul>
             </div>
         )
+        }
     }
-}
 
 const getCast = roles => {
     if (roles) {
         roles = roles && roles.sort((role1, role2) => role1.orderNumber - role2.orderNumber);
         
         return (
-            <div className="cast-list">Cast List
-                {roles.map(({ castMember: castMembers, roleName }) => {
-                    return castMembers.map(castMember => {
-                        return (
-                            <div className="cast-list_item" key={roleName}>
-                                <div className="cast-list_role-name">{roleName}</div>
-                                <div className="cast-list_cast-name">{castMember.name}</div>
-                            </div>
-                        )
-                    })
-                    
+            <ul className="cast-list">Cast List
+                {roles.map(({ castMember, roleName }) => {
+                    return (
+                        <li className="cast-list_item" key={roleName}>
+                            <div className="cast-list_role-name">{roleName}</div>
+                            <div className="cast-list_cast-name">{castMember.name}</div>
+                        </li>
+                    )
                 })}
-            </div>
+            </ul>
         )
     }
 }
@@ -94,85 +95,122 @@ const getCoverPhoto = productionPhoto => {
     return productionPhoto && <GatsbyImage image= {getImage(productionPhoto)} alt=""/>
 }
 
+const isMulticast = events => {
+    const castLists = events.map(event => event.roles);
+    
+    let doubleCast = false;
+    
+    castLists[0] && castLists[0].forEach(({ roleName, castMember }) => {
+        for (let i = 1; i < castLists.length; i++) {
+            const currentEntry = castLists[i].find(castMember => castMember.roleName === roleName);
+
+            // If the entry is not found or if the names are different, set the variable as true
+            if (!currentEntry || currentEntry.castMember.name !== castMember.name) {
+                doubleCast= true;
+            }
+        }
+    })
+
+    return doubleCast;
+}
+
+const getEventInfo = (events, multipleCastLists) => {
+    return events.map((event, i) => {
+        const {eventDate, venue, ticketsLink, roles} = event;
+
+        // if multiple cast lists, create cast list for each event
+        const castList = multipleCastLists && getCast(roles);
+        
+        return (
+        <div className="event_info" key={i}>
+            {getDate(eventDate)} 
+            <div className="event_location">
+                <a href={venue.website} target="_blank" rel="noreferrer">{venue.name}</a>
+            </div> 
+            {getTickets(ticketsLink)}
+            {castList}
+        </div>
+        )})
+}
+        
 const EventsPage = () => {
     const eventData = useStaticQuery(graphql`
     query EventPageQuery {
-        allContentfulEvent(sort: {eventDate: ASC}) {
+        allContentfulProduction(
+            sort: {events: {eventDate: ASC}}
+          ) {
             nodes {
-              production {
-                name
-                longDescription {
-                  raw
-                }
-                shortDescription {
-                  raw
-                }
-                staff {
-                  fields {
-                    person {
-                      en_US {
-                        fields {
-                          name {
-                            en_US
-                          }
-                        }
-                      }
-                    }
-                    title {
-                      en_US
-                    }
-                  }
-                }
-                productionPhoto {
-                  gatsbyImageData
-                  title
-                }
+              name
+              productionPhoto {
+                gatsbyImageData
               }
-              eventDate
-              ticketsLink
-              venue {
-                name
-                website
+              longDescription {
+                raw
               }
-              roles {
-                castMember {
-                  ... on ContentfulPersonnel {
+              shortDescription {
+                raw
+              }
+              staff {
+                title
+                personnel {
                     name
+                }
+              }
+              events {
+                eventDate
+                ticketsLink
+                venue {
+                  name
+                  website
+                }
+                roles {
+                  roleName
+                  castMember {
+                    ... on ContentfulPersonnel {
+                      name
+                    }
                   }
                 }
-                roleName
+                
               }
             }
           }
     }`)
 
-    const eventList = eventData.allContentfulEvent.nodes
+    const productionList = eventData.allContentfulProduction.nodes;
     
     return (
         <Layout>
             <main>
                 <div className="events-page">
                     <div className="section-title">Upcoming Events</div>
-                    <ul className="events-page_eventlist"> 
-                        {eventList.map(({ eventDate, production, roles, ticketsLink, venue }, i) => {
-                            if (!production) {
-                                return (<li key={i}></li>)
+                    <ul className="events-page_production-list"> 
+                        {productionList.map(({ events, longDescription, name, productionPhoto, shortDescription, staff}, i) => {
+
+                            if (!events) {
+                                return <li key={i}></li>
                             }
 
-                            const { shortDescription, longDescription, name, productionPhoto, staff } = production[0];
+                            events.sort((event1, event2) => {
+                                return new Date(event1.eventDate) - new Date(event2.eventDate)
+                            });
+                            
+                            const multipleCastLists = isMulticast(events);
+                            let roles = null;
+                            
+                            // if only one cast, create cast list with cast from first event 
+                            if (!multipleCastLists) {
+                                roles = getCast(events[0].roles)
+                            }
 
                             return (
-                                <li className="event" key={`${name} - ${i}`}>
+                                <li className="production" key={i}>
                                     {getCoverPhoto(productionPhoto)}
-                                    <div className="event_title">{name}</div>
-                                    {getDate(eventDate)}
-                                    <div className="event_location">
-                                        <a href={venue.website} target="_blank" rel="noreferrer">{venue.name}</a>
-                                    </div>
+                                    <div className="production_title">{name}</div>
                                     {getEventDescription(longDescription, shortDescription)}
-                                    {getTickets(ticketsLink)}
                                     {getStaff(staff)}
-                                    {getCast(roles)}
+                                    <ul>{getEventInfo(events, multipleCastLists)}</ul>
+                                    {roles}
                                 </li>
                         )})}
                     </ul>
