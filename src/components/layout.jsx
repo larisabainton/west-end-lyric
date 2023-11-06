@@ -16,6 +16,7 @@ const Layout = ({ children }) => {
                             <li><Link className="header_sub-link" to="/about/our-mission">Our Mission</Link></li>
                             <li><Link className="header_sub-link" to="/about/our-team">Our Team</Link></li>
                             <li><Link className="header_sub-link" to="/about/our-sponsors">Our Sponsors</Link></li>
+                            <li><Link className="header_sub-link" to="/about/card-to-culture">Card to Culture</Link></li>
                         </ul>
                     </li>
                     <li className="header_link-wrapper_list-item"><Link to="/events" className="header_link">Events</Link></li>

@@ -6,7 +6,7 @@ import { Link } from "gatsby";
 const AboutPage = () => {
     return (
         <Layout>
-            <main>
+            <main className="about-page">
                 <Link to ="/about/our-mission">Our Mission</Link>
                 <Link to ="/about/our-team">Our Team</Link>
                 <Link to ="/about/our-sponsors">Our Sponsors</Link>
