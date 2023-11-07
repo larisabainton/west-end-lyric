@@ -3,10 +3,96 @@
     flex-direction: column;
 }
 
+.events-page ul {
+    padding: 0px;
+}
+
 .cast-list_item {
     display: flex;
 }
 
 .cast-list_role-name {
     flex: 1;
+}
+
+.production_title {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    color: white;
+    font-size: $title-font-size;
+    font-family: $title-font;
+    display: flex;
+    align-items: flex-end;
+    flex: .45;
+    background-color: rgba(0, 0, 0, .5)
+}
+
+.production_cover-photo {
+    width: 100%;
+    height: 80vh;
+    position: absolute;
+}
+
+.production_dates {
+    display: flex;
+    justify-content: space-around;
+    padding: 3vh 0vw;
+}
+
+.event_date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 16pt;
+    color: $base-color;
+    font-family: $title-font;
+}
+
+.event_tickets a:visited {
+    color: white;
+}
+
+.event_tickets {
+    background-color: $accent-color;
+    color: white;
+    font-family: $title-font;
+    font-size: $subtitle-font-size;
+    padding: 1vh 1.5vw;
+    margin-top: 1vh;
+}
+
+.event_tickets a,
+.event_tickets a:visited {
+    color: white;
+}
+
+.staff {
+    display: flex;
+    gap: 3vw;
+}
+
+.staff-member_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cast-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3vw;
+}
+
+.cast-member_item {
+    display :flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cast-member_dates {
+    display: flex;
+    flex-direction: column;
 }

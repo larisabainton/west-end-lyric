@@ -1,136 +1,14 @@
 import React from "react";
-import { graphql, useStaticQuery } from "gatsby";
+import { graphql, useStaticQuery, Link } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { renderRichText } from 'gatsby-source-contentful/rich-text';
 
 import Layout from "../../components/layout.jsx";
-
-const getStaff = staffArray => {
-    if (staffArray && staffArray.length) {
-        return (
-            <div className="staff-info">
-                <div className="staff-info_name">Direction</div>
-                <ul>
-                {staffArray.map((staff, i) => {
-                    const name = staff.personnel.name;
-                    const title = staff.title;
-                    return (
-                        <li className="staff-member_info" key={i}>
-                            <div className="staff-member_title">{title}</div>
-                            <div className="staff-member_name">{name}</div>
-                        </li>
-                )})}
-                </ul>
-            </div>
-        )
-        }
-    }
-
-const getCast = roles => {
-    if (roles) {
-        roles = roles && roles.sort((role1, role2) => role1.orderNumber - role2.orderNumber);
-        
-        return (
-            <ul className="cast-list">Cast List
-                {roles.map(({ castMember, roleName }) => {
-                    return (
-                        <li className="cast-list_item" key={roleName}>
-                            <div className="cast-list_role-name">{roleName}</div>
-                            <div className="cast-list_cast-name">{castMember.name}</div>
-                        </li>
-                    )
-                })}
-            </ul>
-        )
-    }
-}
-
-const getTickets = ticketsLink => {
-    if (ticketsLink) {
-        return (
-        <div className="event_tickets">
-            <a target="_blank" rel="noreferrer" href={ticketsLink}>Get Tickets</a>
-        </div>
-        )
-    }
-}
-
-const getEventDescription = (longDescription, shortDescription) => {
-    let text = '';
-
-    if (longDescription) {
-        text = renderRichText(longDescription)
-    } else if (shortDescription) {
-        text = renderRichText(shortDescription)
-    }
-    
-    return <div className="event_description">{text}</div>
-}
-
-const getDate = eventDate => {
-    const date = new Date(eventDate);
-
-    const dateOptions = {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric',
-    }
-
-    const timeOptions = {
-        hour12: true,
-        hour: 'numeric',
-        minute: 'numeric',
-    }
-    return (
-        <div className="event_date-container">
-            <div className="event_date">{date.toLocaleDateString("en-US", dateOptions)}</div>
-            <div className="event_time">{date.toLocaleTimeString("en-US", timeOptions)}</div> 
-        </div>
-        
-    )
-    
-}
+import CastList from "../../components/events/CastList";
+import EventDates from "../../components/events/EventDates.jsx";
 
 const getCoverPhoto = productionPhoto => {
-    return productionPhoto && <GatsbyImage image= {getImage(productionPhoto)} alt=""/>
-}
-
-const isMulticast = events => {
-    const castLists = events.map(event => event.roles);
-    
-    let doubleCast = false;
-    
-    castLists[0] && castLists[0].forEach(({ roleName, castMember }) => {
-        for (let i = 1; i < castLists.length; i++) {
-            const currentEntry = castLists[i].find(castMember => castMember.roleName === roleName);
-
-            // If the entry is not found or if the names are different, set the variable as true
-            if ((!currentEntry || !currentEntry.castMember)|| currentEntry.castMember.name !== castMember.name) {
-                doubleCast= true;
-            }
-        }
-    })
-
-    return doubleCast;
-}
-
-const getEventInfo = (events, multipleCastLists) => {
-    return events.map((event, i) => {
-        const {eventDate, venue, ticketsLink, roles} = event;
-
-        // if multiple cast lists, create cast list for each event
-        const castList = multipleCastLists && getCast(roles);
-        
-        return (
-        <div className="event_info" key={i}>
-            {getDate(eventDate)} 
-            <div className="event_location">
-                <a href={venue.website} target="_blank" rel="noreferrer">{venue.name}</a>
-            </div> 
-            {getTickets(ticketsLink)}
-            {castList}
-        </div>
-        )})
+    return productionPhoto && <GatsbyImage className="production_cover-photo" image= {getImage(productionPhoto)} alt=""/>
 }
         
 const EventsPage = () => {
@@ -154,6 +32,9 @@ const EventsPage = () => {
                 title
                 personnel {
                     name
+                    headshot {
+                        gatsbyImageData
+                    }
                 }
               }
               events {
@@ -166,10 +47,11 @@ const EventsPage = () => {
                 roles {
                   roleName
                   castMember {
-                    ... on ContentfulPersonnel {
                       name
+                      headshot {
+                        gatsbyImageData
+                      }
                     }
-                  }
                 }
                 
               }
@@ -183,34 +65,28 @@ const EventsPage = () => {
         <Layout>
             <main>
                 <div className="events-page">
-                    <div className="section-title">Upcoming Events</div>
                     <ul className="events-page_production-list"> 
-                        {productionList.map(({ events, longDescription, name, productionPhoto, shortDescription, staff}, i) => {
-
-                            if (!events) {
-                                return <li key={i}></li>
-                            }
+                        {productionList.map(({ events, longDescription, name, productionPhoto, staff}, i) => {
 
                             events.sort((event1, event2) => {
                                 return new Date(event1.eventDate) - new Date(event2.eventDate)
                             });
-                            
-                            const multipleCastLists = isMulticast(events);
-                            let roles = null;
-                            
-                            // if only one cast, create cast list with cast from first event 
-                            if (!multipleCastLists) {
-                                roles = getCast(events[0].roles)
-                            }
 
                             return (
-                                <li className="production" key={i}>
+                                <li className="production" key={`production-${i}`}>
                                     {getCoverPhoto(productionPhoto)}
                                     <div className="production_title">{name}</div>
-                                    {getEventDescription(longDescription, shortDescription)}
-                                    {getStaff(staff)}
-                                    <ul>{getEventInfo(events, multipleCastLists)}</ul>
-                                    {roles}
+                                    <EventDates events={events} />
+                                    <div className="production_navigation">
+                                        <Link to="#production_about">About</Link>
+                                        <Link to="#production_artists">Artists</Link>
+                                        <Link to="#production_venues">Venue</Link>
+                                    </div>
+                                    <div className="production_about" id="production_about">
+                                        {longDescription && renderRichText(longDescription)}
+                                    </div>
+                                    <CastList events={events} staff={staff}/>
+                                    <div className="production_venues" id="production_venues"></div>
                                 </li>
                         )})}
                     </ul>

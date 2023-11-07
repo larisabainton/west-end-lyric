@@ -61,3 +61,15 @@ main {
     font-size: $subtitle-font-size;
     font-family: $title-font;
 }
+
+.circular-headshot {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 50%;
+
+    img {
+        object-position: center top;
+    }
+}
