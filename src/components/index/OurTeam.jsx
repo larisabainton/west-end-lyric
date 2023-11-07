@@ -39,7 +39,6 @@ const OurTeam = () => {
     `)
 
     const teamMembers = teamData.allContentfulPersonnel.nodes;
-    console.log(teamMembers)
 
     return (
         <div className="ourTeam">

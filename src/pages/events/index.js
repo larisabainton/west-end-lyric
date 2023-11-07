@@ -103,7 +103,6 @@ const isMulticast = events => {
     castLists[0] && castLists[0].forEach(({ roleName, castMember }) => {
         for (let i = 1; i < castLists.length; i++) {
             const currentEntry = castLists[i].find(castMember => castMember.roleName === roleName);
-            console.log(currentEntry);
 
             // If the entry is not found or if the names are different, set the variable as true
             if ((!currentEntry || !currentEntry.castMember)|| currentEntry.castMember.name !== castMember.name) {

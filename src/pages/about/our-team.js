@@ -32,7 +32,6 @@ const OurTeamPage = () => {
 
     // get teamMembers sorted by orderNumber
     const teamMembers = teamData.allContentfulPersonnel.nodes;
-    console.log(teamMembers);
     
     return(
         <Layout>
