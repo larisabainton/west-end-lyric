@@ -28,12 +28,43 @@
 /* each individual event */
 .eventList_event {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     border-bottom: 2px solid $accent-color;
     padding-top: 32px;
     padding-bottom: 32px;
+}
+
+.eventList_event--displayed {
+    display: flex;
     align-items: center;
     justify-content:space-between;
+}
+
+
+
+.eventList_event--hidden {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 1vw;
+    padding-top: 1.5vh;
+}
+
+.eventList_event:hover,
+.eventList_event:focus {
+    .eventList_event--hidden { display: flex };
+}
+
+.eventList_event_description {
+    text-align: left;
+    flex: 1;
+}
+
+.eventList_event_link {
+    color: white;
+    background-color: blue;
+    font-weight: bold;
+    padding: 2vh 2vw;
 }
 
 /* container for date, month, year, time */
@@ -110,11 +141,19 @@
         font-size: $small-font-size;
     }
 
-    .eventList_event {
+    .eventList_event--displayed {
         width: 100%;
         flex-direction: column;
         text-align: center;
         gap: .75vh;
+    }
+    
+    .eventList_event--hidden {
+        flex-direction: column;
+    }
+
+    .eventList_event_description {
+        text-align: center;
     }
 
     .eventList_event--date {

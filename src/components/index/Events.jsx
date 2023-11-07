@@ -1,5 +1,6 @@
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql, useStaticQuery, Link } from 'gatsby';
 import React from 'react';
+import { renderRichText } from 'gatsby-source-contentful/rich-text';
 
 const getDate = eventDate => {
     const date = new Date(eventDate);
@@ -46,6 +47,15 @@ const showTicketsOrVenue = (ticketsLink, venue) => {
     }
 }
 
+const getDescription = production => {
+    if (production && production.shortDescription) {
+        return (
+        <div className="eventList_event_description">
+            {renderRichText(production.shortDescription)}
+        </div>)
+    }
+}
+
 const Events = () => {
     const eventData = useStaticQuery(graphql`
         query EventDataQuery {
@@ -57,6 +67,11 @@ const Events = () => {
                     venue {
                         name
                         website
+                    }
+                    production {
+                        shortDescription {
+                            raw
+                        }
                     }
                 }
             }
@@ -71,16 +86,22 @@ const Events = () => {
         <div className="events" id="events">
             <div className="events_title">Upcoming Performances</div>
             <ul className="events_eventList">
-                {eventList.map(({ eventDate, venue, eventTitle, ticketsLink }, i) => (
+                {eventList.map(({ production, eventDate, venue, eventTitle, ticketsLink }, i) => (
                     <li className="eventList_event" key={`${eventTitle} - ${i}`}>
-                        {getDate(eventDate)}
-                        <div className="eventList_event--title">{eventTitle}</div>
-                        {showTicketsOrVenue(ticketsLink, venue)}
+                        <div className="eventList_event--displayed">
+                            {getDate(eventDate)}
+                            <div className="eventList_event--title">{eventTitle}</div>
+                            {showTicketsOrVenue(ticketsLink, venue)}
+                        </div>
+                        <div className="eventList_event--hidden">
+                            {getDescription(production[0])}
+                            <Link className="eventList_event_link" to="/events">Learn More</Link>
+                        </div>
                     </li>
                 ))}
             </ul>
         </div>
-    </div>);
+    </div>)
 }
 
 export default Events;
