@@ -74,7 +74,7 @@ const Layout = ({ children }) => {
                             <li><Link className="header_sub-link" to="/about/card-to-culture">Card to Culture</Link></li>
                         </ul>
                     </li>
-                    <li className="header_link-wrapper_list-item"><Link to="/events" className="header_link">Events</Link>
+                    <li className="header_link-wrapper_list-item"><div className="header_link">Events</div>
                         <ul className="header_sub-menu">
                             {getEventsMenu(productionArray, pagesArray)}
                         </ul>

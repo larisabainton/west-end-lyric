@@ -1,5 +1,7 @@
 import * as React from "react";
 import '../style/main.scss';
+import { graphql } from "gatsby";
+
 
 import AboutUs from '../components/index/AboutUs';
 import CardToCulture from "../components/index/CardToCulture";
@@ -14,7 +16,10 @@ import Layout from '../components/layout';
 
 import '@fortawesome/fontawesome-svg-core/styles.css';
 
-const IndexPage = () => {
+const IndexPage = ({ data }) => {
+  const eventsArray = data.allContentfulEvent.nodes;
+  const pagesArray = data.allSitePage.edges;
+
   return (
     <div>
       <DonateButton className= "body_donate-button" />
@@ -22,7 +27,7 @@ const IndexPage = () => {
         <main>
           <Cover />
           <AboutUs />
-          <Events />
+          <Events events={eventsArray} pages={pagesArray}/>
           <OurTeam />
           <CardToCulture />
           <Sponsors />
@@ -36,3 +41,33 @@ const IndexPage = () => {
 export default IndexPage
 
 export const Head = () => <title>West End Lyric</title>
+
+export const query = graphql`
+  query IndexPageQuery {
+    allSitePage(filter: {path: {regex: "/events/"}}) {
+      edges {
+        node {
+          path
+          pageContext
+        }
+      }
+    }
+    allContentfulEvent {
+      nodes {
+          ticketsLink
+          eventTitle
+          eventDate
+          venue {
+              name
+              website
+          }
+          production {
+              id
+              shortDescription {
+                  raw
+              }
+          }
+      }
+    }
+  }
+`

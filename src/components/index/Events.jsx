@@ -2,6 +2,12 @@ import { graphql, useStaticQuery, Link } from 'gatsby';
 import React from 'react';
 import { renderRichText } from 'gatsby-source-contentful/rich-text';
 
+const getLink = (productionId, pages) => {
+    const matchingPage = pages.find(page => page.node.pageContext && page.node.pageContext.id === productionId);
+
+    return matchingPage.node.path;
+}
+
 const getDate = eventDate => {
     const date = new Date(eventDate);
 
@@ -56,37 +62,14 @@ const getDescription = production => {
     }
 }
 
-const Events = () => {
-    const eventData = useStaticQuery(graphql`
-        query EventDataQuery {
-            allContentfulEvent {
-                nodes {
-                    ticketsLink
-                    eventTitle
-                    eventDate
-                    venue {
-                        name
-                        website
-                    }
-                    production {
-                        shortDescription {
-                            raw
-                        }
-                    }
-                }
-            }
-        }
-    `)
-
-    const eventList = eventData.allContentfulEvent.nodes
-        /* sort events by date */
-        .sort((node1, node2) => new Date(node1.eventDate) - new Date(node2.eventDate));
+const Events = ({events, pages}) => {
+    events.sort((node1, node2) => new Date(node1.eventDate) - new Date(node2.eventDate));
 
     return (<div>
         <div className="events" id="events">
             <div className="events_title">Upcoming Performances</div>
             <ul className="events_eventList">
-                {eventList.map(({ production, eventDate, venue, eventTitle, ticketsLink }, i) => (
+                {events.map(({ production: productions, eventDate, venue, eventTitle, ticketsLink }, i) => (
                     <li className="eventList_event" key={`${eventTitle} - ${i}`}>
                         <div className="eventList_event--displayed">
                             {getDate(eventDate)}
@@ -94,8 +77,8 @@ const Events = () => {
                             {showTicketsOrVenue(ticketsLink, venue)}
                         </div>
                         <div className="eventList_event--hidden">
-                            {getDescription(production[0])}
-                            <Link className="eventList_event_link" to="/events">Learn More</Link>
+                            {getDescription(productions[0])}
+                            <Link className="eventList_event_link" to={getLink(productions[0].id, pages)}>Learn More</Link>
                         </div>
                     </li>
                 ))}
