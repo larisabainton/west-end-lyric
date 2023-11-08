@@ -1,12 +1,20 @@
 import React from "react";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
+const getHeadshot = (name, headshot) => {
+    const image = getImage(headshot);
+    
+    if (image) {
+        return <GatsbyImage className="circular-headshot" image={image} alt={`${name} headshot`}/>
+    }
+}
+
 const getCastList = events => {
     const castList = [];
     
     events.forEach(event => {
        return event.roles && event.roles.forEach(role => {
-            const existingEntry = castList.find(entry => entry && entry.name == role.castMember.name);
+            const existingEntry = castList.find(entry => entry && entry.name == role.castMember.name); // eslint-disable-line
 
             if (existingEntry) {
                 existingEntry.dates.push(event.eventDate)
@@ -22,7 +30,11 @@ const getCastList = events => {
     })
 
     if (castList.length) {
-        castList.sort((castMember1, castMember2) => castMember1.roleName - castMember2.roleName);
+        castList.sort((a, b) => {
+            if(a.roleName < b.roleName) { return -1; }
+            if(a.roleName > b.roleName) { return 1; }
+            return 0;
+        });
     }
 
     return castList;
@@ -34,15 +46,16 @@ const getCast = events => {
     if (castList) {
         return (
             <ul className="cast-list">
-                {castList.map(({ name, roleName, headshot, dates }, i) => {
+                {castList.map(({ name, roleName, headshot, dates}, i) => {
+
                     return (
-                        <li className="cast-member_item" key={`cast-member-${i}`}>
-                            <GatsbyImage className="circular-headshot" image={getImage(headshot)} alt={`${name} headshot`}/>
+                        <li key={`cast-member-${i}`}>
+                            {getHeadshot(name, headshot)}
                             <div className="cast-member_role">{roleName}</div>
                             <div className="cast-member_name">{name}</div>
                             <div className="cast-member_dates">
-                                {dates.sort().map(date => {
-                                    return (<div className="cast-member_date">{new Date(date).toLocaleDateString("en-US", { month: 'short', day: 'numeric'})}</div>)
+                                {dates.sort().map((date, i) => {
+                                    return (<div className="cast-member_date" key={`cast-member_date_${i}`}>{new Date(date).toLocaleDateString("en-US", { month: 'short', day: 'numeric'})}</div>)
                                 })}
                             </div>
                         </li>
