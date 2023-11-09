@@ -1,5 +1,12 @@
 import React from "react";
+import { Link } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
+
+const getLink = (name, pages) => {
+    const page = pages.find(page => page.node.pageContext && page.node.pageContext.name === name)
+
+    return page.node.path;
+}
 
 const getHeadshot = (name, headshot) => {
     const image = getImage(headshot);
@@ -9,7 +16,7 @@ const getHeadshot = (name, headshot) => {
     }
 }
 
-const getCastList = events => {
+const getCastList = (events, pages) => {
     const castList = [];
     
     events.forEach(event => {
@@ -23,7 +30,8 @@ const getCastList = events => {
                     roleName: role.roleName, 
                     name: role.castMember.name,
                     headshot: role.castMember.headshot,
-                    dates: [ event.eventDate ] 
+                    dates: [ event.eventDate ],
+                    link: getLink(role.castMember.name, pages),
                 })
             }
        })
@@ -40,19 +48,19 @@ const getCastList = events => {
     return castList;
 }
 
-const getCast = events => {
-    const castList = getCastList(events);
+const getCast = (events, pages) => {
+    const castList = getCastList(events, pages);
     
     if (castList) {
         return (
             <ul className="cast-list">
-                {castList.map(({ name, roleName, headshot, dates}, i) => {
+                {castList.map(({ name, roleName, headshot, dates, link}, i) => {
 
                     return (
                         <li key={`cast-member-${i}`}>
                             {getHeadshot(name, headshot)}
                             <div className="cast-member_role">{roleName}</div>
-                            <div className="cast-member_name">{name}</div>
+                            <Link className="cast-member_name"to={link}>{name}</Link>
                             <div className="cast-member_dates">
                                 {dates.sort().map((date, i) => {
                                     return (<div className="cast-member_date" key={`cast-member_date_${i}`}>{new Date(date).toLocaleDateString("en-US", { month: 'short', day: 'numeric'})}</div>)
@@ -66,7 +74,7 @@ const getCast = events => {
     }
 }
 
-const getStaff = staffArray => {
+const getStaff = (staffArray, pages) => {
     if (staffArray && staffArray.length) {
         return (
             <ul className="staff">
@@ -75,12 +83,13 @@ const getStaff = staffArray => {
                     const name = staff.personnel.name;
                     const image = getImage(staff.personnel.headshot)
                     const title = staff.title;
+                    const link = getLink(name, pages);
 
                     return (
                         <li className="staff-member_info" key={`staff-member-${i}`}>
                             <GatsbyImage className="circular-headshot" image={image} alt={`${name} headshot`}/>
                             <div className="staff-member_title">{title}</div>
-                            <div className="staff-member_name">{name}</div>
+                            <Link to={link} className="staff-member_name">{name}</Link>
                         </li>
                 )})}
             </ul>
@@ -89,7 +98,7 @@ const getStaff = staffArray => {
     }
 
 
-const CastList = ({ events, staff }) => {
+const CastList = ({ events, staff, pages }) => {
     if (!events[0].roles) {
         return;
     }
@@ -97,9 +106,9 @@ const CastList = ({ events, staff }) => {
     return (
         <div className="production_artists" id="#production-artists">
             <div className="production_artists_staff-title">Creative Team</div>
-            {getStaff(staff)}
+            {getStaff(staff, pages)}
             <div className="production_artists_cast-title">Cast</div>
-            {getCast(events)}
+            {getCast(events, pages)}
         </div>
     )
 };

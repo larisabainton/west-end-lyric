@@ -13,13 +13,13 @@ const getCoverPhoto = productionPhoto => {
 
 const Production = ({ data }) => {
     const production = data.contentfulProduction;
+    const pages = data.allSitePage.edges;
 
     const { events, longDescription, name, productionPhoto, staff } = production;
 
     return (
     <Layout>
-        <main>
-        <div className="production-page">
+        <main className="production-page">
             {getCoverPhoto(productionPhoto)}
             <div className="production_title">{name}</div>
             <EventDates events={events} />
@@ -31,15 +31,16 @@ const Production = ({ data }) => {
             <div className="production_about" id="production_about">
                 {longDescription && renderRichText(longDescription)}
             </div>
-            <CastList events={events} staff={staff}/>
+            <CastList pages={pages} events={events} staff={staff}/>
             <div className="production_venues" id="production_venues"></div>
                
-        </div>
         </main>
     </Layout>)
 }
 
 export default Production;
+
+export const Head = ({ data }) => <title>{`West End Lyric | ${data.contentfulProduction.name}`}</title>
 
 export const query = graphql`
     query ($id: String!) {
@@ -82,5 +83,13 @@ export const query = graphql`
             
             }
         }
+        allSitePage(filter: {path: {regex: "/personnel/"}}) {
+            edges {
+              node {
+                path
+                pageContext
+              }
+            }
+          }
     }
 `

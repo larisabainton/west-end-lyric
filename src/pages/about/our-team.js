@@ -1,60 +1,36 @@
 import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
+import { Link, graphql } from "gatsby";
 import { renderRichText } from 'gatsby-source-contentful/rich-text';
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
-
 import Layout from '../../components/layout';
 
-const OurTeamPage = () => {
-    const teamData = useStaticQuery(graphql`
-    query TeamPageQuery {
-        allContentfulPersonnel(
-            filter: {team_member: {elemMatch: {orderNumber: {ne: null}}}}
-            sort: {team_member: {orderNumber: ASC}}
-        ) {
-            nodes {
-              team_member {
-                jobTitle
-                orderNumber
-              }
-              name
-              bio {
-                raw
-              }
-              headshot {
-                gatsbyImageData
-              }
-            }
-          }
-      }
-    `)
+const getLink = (name, pages) => {
+    const page = pages.find(page => page.node.pageContext && page.node.pageContext.name === name)
 
-    // get teamMembers sorted by orderNumber
-    const teamMembers = teamData.allContentfulPersonnel.nodes;
+    return page.node.path;
+}
+
+const OurTeamPage = ({ data }) => {
+    const teamMembers = data.allContentfulPersonnel.nodes;
+    const pages = data.allSitePage.edges;
     
     return(
         <Layout>
-            <main>
-                <div className="our-team">
-                    <div className="section-title">Our Team</div>
-                    <ul className="teamMembers-list">
-                    {teamMembers.map(({ name, team_member, headshot, bio}) => {
+            <main className="our-team">
+                <div className="section-title">Our Team</div>
+                <ul className="teamMembers-list">
+                    {teamMembers.map(({ name, team_member }) => {
                         const jobTitle = team_member[0].jobTitle;
 
                         return (
                             <li className="teamMembers-list-item" key={name}>
-                                <div className="teamMembers-list-item_info">
-                                    <GatsbyImage className="teamMembers-list-item_photo" image={getImage(headshot)} alt={`${name} Headshot`}/>
-                                    <div className="teamMembers-list-item_name">{name}</div>
-                                    <div className="teamMembers-list-item_job">{jobTitle}</div>
-                                </div>
-                                <div className="teamMembers-list-item_bio">{renderRichText(bio)}</div>
+                                <div className="teamMembers-list-item_job">{jobTitle}</div>
+                                <Link className="teamMembers-list-item_name" to={getLink(name, pages)}>{name}</Link>
                             </li>
                         )
                     })}
-                    </ul>
-                </div>
+                </ul>
             </main>
         </Layout>
     )
@@ -63,3 +39,28 @@ const OurTeamPage = () => {
 export default OurTeamPage;
 
 export const Head = () => <title>West End Lyric | Our Team</title>
+
+export const query = graphql`
+    query TeamPageQuery {
+        allContentfulPersonnel(
+            filter: {team_member: {elemMatch: {orderNumber: {ne: null}}}}
+            sort: {team_member: {orderNumber: ASC}}
+        ) {
+            nodes {
+                team_member {
+                    jobTitle
+                    orderNumber
+                }
+                name
+            }
+        }
+        allSitePage(filter: {path: {regex: "/personnel/"}}) {
+            edges {
+              node {
+                path
+                pageContext
+              }
+            }
+          }
+    }
+`

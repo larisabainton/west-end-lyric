@@ -1,4 +1,4 @@
-import { graphql, useStaticQuery, Link } from 'gatsby';
+import { Link } from 'gatsby';
 import React from 'react';
 import { renderRichText } from 'gatsby-source-contentful/rich-text';
 
@@ -65,7 +65,7 @@ const getDescription = production => {
 const Events = ({events, pages}) => {
     events.sort((node1, node2) => new Date(node1.eventDate) - new Date(node2.eventDate));
 
-    return (<div>
+    return (
         <div className="events" id="events">
             <div className="events_title">Upcoming Performances</div>
             <ul className="events_eventList">
@@ -84,7 +84,7 @@ const Events = ({events, pages}) => {
                 ))}
             </ul>
         </div>
-    </div>)
+    )
 }
 
 export default Events;
