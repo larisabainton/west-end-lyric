@@ -1,31 +1,12 @@
 import React from 'react';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { renderRichText } from 'gatsby-source-contentful/rich-text';
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql } from 'gatsby';
 
 import Layout from '../../components/layout';
 
-const OurSponsorsPage = () => {
-    const sponsorData = useStaticQuery(graphql`
-        query SponsorPageQuery {
-            allContentfulSponsor {
-                nodes {
-                  logoImage {
-                    gatsbyImageData
-                  }
-                  name
-                  shortDescription {
-                    raw
-                  }
-                  longDescription {
-                    raw
-                  }
-                }
-              }
-        }
-    `)
-
-    const sponsors = sponsorData.allContentfulSponsor.nodes;
+const OurSponsorsPage = ({ data }) => {
+    const sponsors = data.allContentfulSponsor.nodes;
     
     return(
         <Layout>
@@ -54,3 +35,22 @@ const OurSponsorsPage = () => {
 export default OurSponsorsPage;
 
 export const Head = () => <title>West End Lyric | Our Sponsors</title>
+
+export const query = graphql`
+    query SponsorPageQuery {
+        allContentfulSponsor {
+            nodes {
+            logoImage {
+                gatsbyImageData
+            }
+            name
+            shortDescription {
+                raw
+            }
+            longDescription {
+                raw
+            }
+            }
+        }
+    }
+`

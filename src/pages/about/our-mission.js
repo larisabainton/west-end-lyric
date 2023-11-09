@@ -1,24 +1,11 @@
 import React from "react";
 
 import Layout from '../../components/layout';
-import { graphql, useStaticQuery } from "gatsby";
+import { graphql } from "gatsby";
 import { renderRichText } from "gatsby-source-contentful/rich-text";
 
-const OurMissionPage = () => {
-    const missionData = useStaticQuery(graphql`
-        query MissionPageQuery {
-            contentfulDescription(name: {eq: "Mission Statement"}) {
-                shortDescription {
-                  raw
-                }
-                longDescription {
-                    raw
-                }
-              }
-        }
-    `)
-
-    const { shortDescription, longDescription } = missionData.contentfulDescription;
+const OurMissionPage = ({ data }) => {
+    const { shortDescription, longDescription } = data.contentfulDescription;
     
     return (
         <Layout>
@@ -37,3 +24,16 @@ const OurMissionPage = () => {
 export default OurMissionPage;
 
 export const Head = () => <title>West End Lyric | Our Mission</title>
+
+export const query = graphql`
+    query MissionPageQuery {
+        contentfulDescription(name: {eq: "Mission Statement"}) {
+            shortDescription {
+            raw
+            }
+            longDescription {
+                raw
+            }
+        }
+    }
+`
