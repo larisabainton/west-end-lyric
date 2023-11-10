@@ -1,7 +1,5 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
-import { renderRichText } from 'gatsby-source-contentful/rich-text';
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 import Layout from '../../components/layout';
 

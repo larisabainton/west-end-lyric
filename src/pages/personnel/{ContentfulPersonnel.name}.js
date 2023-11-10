@@ -18,7 +18,7 @@ const displayStaff = staffArray => {
             <ul className="personnel-title">Creative Direction 
                 {staffArray.map(({ production, title}, i) => {
                     const productionName = production[0].name;
-                    const year = new Date(production[0].events[0].eventDate).toLocaleDateString("en-US", {year: "numeric"});
+                    const year = new Date(production[0].events[0].eventDate).getFullYear();
 
                     return (
                         <li className="personnel_staff" key={`personnel_staff-${i}`}>{title} in {productionName}, {year}</li>
@@ -35,7 +35,7 @@ const displayRoles = roles => {
         <ul className="personnel-title">Roles
             {roles.map(({ roleName, event }, i) => {
                 const productionName = event[0].production[0].name;
-                const year = new Date(event[0].eventDate).toLocaleDateString("en-US", {year: "numeric"});
+                const year = new Date(event[0].eventDate).getFullYear();
 
                 return (
                     <li className="personnel_role" key={`personnel_role-${i}`}>{roleName} in {productionName}, {year}</li>
