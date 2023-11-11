@@ -32,7 +32,7 @@ const getDate = eventDate => {
     
 }
 
-const EventDates = (events) => {
+const EventDates = ({ events }) => {
     
     if (!events.length) {
         return;
@@ -42,7 +42,7 @@ const EventDates = (events) => {
         <div className="production_dates">
             {events.map(({ eventDate, ticketsLink }, i) => {
                 return (
-                    <div className="event_date">
+                    <div className="event_date" key={`event_date-${i}`}>
                         {getDate(eventDate)}
                         {getTickets(ticketsLink)}
                     </div>
