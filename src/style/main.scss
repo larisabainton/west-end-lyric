@@ -1,18 +1,10 @@
 @import 'constants';
+@import 'components';
 
-@import 'index/aboutUs';
-@import 'index/cardToCulture';
-@import 'index/contact';
-@import 'index/cover';
-@import 'index/events';
-@import 'index/ourTeam';
-@import 'index/sponsors';
-
-@import 'donateButton';
-@import 'layout';
-
+// Pages
+@import 'index';
 @import 'about';
-@import 'events';
+@import 'contentful-productions';
 
 
 html {

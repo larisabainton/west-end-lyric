@@ -65,12 +65,12 @@ export const query = graphql`
             }
             }
             events {
-            eventDate
-            ticketsLink
-            venue {
-                name
-                website
-            }
+                eventDate
+                ticketsLink
+                venue {
+                    name
+                    website
+                }
             roles {
                 roleName
                 castMember {
