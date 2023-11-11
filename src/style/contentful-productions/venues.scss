@@ -1,0 +1,38 @@
+.production_venues .section-title {
+    text-align: left;
+    padding-bottom: 3vh;
+    padding-top: 2vh;
+    padding-left: 3vw;
+}
+
+.production_venues {
+    padding-bottom: 5vh;
+}
+
+.production_venues_list {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.production_venues_list-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.production_venue-name {
+    padding: 1vh 0;
+    font-family: $title-font;
+    color: $highlight-color;
+    font-size: 16pt;
+}
+
+.production_venue-name:hover {
+    color: $highlight-color--lighter;
+}
+
+.venue_image {
+    width: 400px;
+    height: 300px;
+}

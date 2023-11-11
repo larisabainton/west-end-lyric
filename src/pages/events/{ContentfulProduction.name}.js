@@ -7,6 +7,7 @@ import Layout from "../../components/layout.jsx";
 import CastList from "../../components/events/CastList";
 import EventDates from "../../components/events/EventDates.jsx";
 import Navigation from "../../components/events/Navigation.jsx";
+import Venues from "../../components/events/Venues.jsx";
 
 const getCoverPhoto = productionPhoto => {
     return productionPhoto && <GatsbyImage className="production_cover-photo" image= {getImage(productionPhoto)} alt=""/>
@@ -29,7 +30,7 @@ const Production = ({ data }) => {
                 {longDescription && renderRichText(longDescription)}
             </div>
             <CastList pages={pages} events={events} staff={staff}/>
-            <div className="production_venues" id="production_venues"></div>
+            <Venues events={events} />
         </main>
     </Layout>)
 }
@@ -43,22 +44,22 @@ export const query = graphql`
         contentfulProduction(id: {eq: $id}) {
             name
             productionPhoto {
-            gatsbyImageData
-            }
-            longDescription {
-            raw
-            }
-            shortDescription {
-            raw
-            }
-            staff {
-            title
-            personnel {
-                name
-                headshot {
                     gatsbyImageData
                 }
+            longDescription {
+                    raw
+                }
+            shortDescription {
+                raw
             }
+            staff {
+                title
+                personnel {
+                    name
+                    headshot {
+                        gatsbyImageData
+                    }
+                }
             }
             events {
                 eventDate
@@ -66,13 +67,17 @@ export const query = graphql`
                 venue {
                     name
                     website
+                    address
+                    photo {
+                        gatsbyImageData
+                    }
                 }
             roles {
                 roleName
                 castMember {
                     name
                     headshot {
-                    gatsbyImageData
+                        gatsbyImageData
                     }
                 }
             }

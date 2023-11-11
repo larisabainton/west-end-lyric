@@ -1,6 +1,7 @@
-@import 'cast-list';
+@import 'artists';
 @import 'event-dates';
 @import 'navigation';
+@import 'venues';
 
 .events-page_eventList {
     display: flex;
@@ -31,11 +32,12 @@
 }
 
 .production_navigation_links,
-.production_about,
-.production_artists {
+.production_about {
     padding-left: 3vw;
 }
 
 .production_about {
     padding-right: 3vw;
+    padding-bottom: 5vh;
 }
+

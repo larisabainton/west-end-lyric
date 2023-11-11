@@ -1,0 +1,81 @@
+$artist-border: $accent-color 2px solid;
+
+.production_artists {
+    background-color: $neutral-color;
+    padding: 5vh 0px;
+}
+
+.production_artists ul {
+    padding: 0px;
+}
+
+.production_artists .section-title {
+    text-align: left;
+    padding-bottom: 3vh;
+    padding-top: 2vh;
+    padding-left: 3vw;
+}
+
+.cast-list,
+.staff {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.artist {
+    display: flex;
+    border-top: $artist-border;
+    padding: 2vh 2vw;
+    min-width: 350px;
+    justify-content: space-evenly;
+    gap: 2vw;
+}
+
+.artist-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.staff-member_title,
+.cast-member_role {
+    color: $base-color;
+    font-family: $title-font;
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+.artist-name {
+    color: $highlight-color;
+    font-family: $title-font;
+    font-size: 16pt;
+}
+
+.artist-name:hover {
+    color: $highlight-color--light;
+}
+
+.cast-member_dates {
+    padding-top: 1vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cast-member_dates_title {
+    font-weight: bold;
+}
+
+@media screen and (max-width: 600px) {
+    .production_artists .circular-headshot {
+        width: 150px;
+        height: 150px;
+    }
+
+    .artist {
+        min-width: 225px;
+    }
+}
