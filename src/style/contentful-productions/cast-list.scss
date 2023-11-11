@@ -1,0 +1,25 @@
+.cast-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3vw;
+}
+
+.cast-list_item {
+    display: flex;
+}
+
+.cast-list_role-name {
+    flex: 1;
+}
+
+.cast-member_item {
+    display :flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cast-member_dates {
+    display: flex;
+    flex-direction: column;
+}

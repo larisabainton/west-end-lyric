@@ -1,3 +1,6 @@
+@import 'cast-list';
+@import 'event-dates';
+
 .events-page_eventList {
     display: flex;
     flex-direction: column;
@@ -5,14 +8,6 @@
 
 .events-page ul {
     padding: 0px;
-}
-
-.cast-list_item {
-    display: flex;
-}
-
-.cast-list_role-name {
-    flex: 1;
 }
 
 .production_title {
@@ -34,37 +29,19 @@
     position: absolute;
 }
 
-.production_dates {
+.production_navigation {
     display: flex;
-    justify-content: space-around;
-    padding: 3vh 0vw;
+    gap: 2vw;
 }
 
-.event_date {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 16pt;
-    color: $base-color;
-    font-family: $title-font;
+.production_navigation,
+.production_about,
+.production_artists {
+    padding-left: 3vw;
 }
 
-.event_tickets a:visited {
-    color: white;
-}
-
-.event_tickets {
-    background-color: $accent-color;
-    color: white;
-    font-family: $title-font;
-    font-size: $subtitle-font-size;
-    padding: 1vh 1.5vw;
-    margin-top: 1vh;
-}
-
-.event_tickets a,
-.event_tickets a:visited {
-    color: white;
+.production_about {
+    padding-right: 3vw;
 }
 
 .staff {
@@ -77,26 +54,4 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.cast-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 3vw;
-}
-
-.cast-member_item {
-    display :flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.cast-member_dates {
-    display: flex;
-    flex-direction: column;
-}
-
-.production_navigation {
-    
 }
