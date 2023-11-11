@@ -1,0 +1,33 @@
+.navigation-wrapper {
+    height: 50px;
+}
+
+.production_navigation {
+    background-color: white;
+    z-index: 100;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: rgba(217, 217, 217, 0.15)
+}
+
+.production_navigation_links {
+    display: flex;
+    gap: 2vw;
+}
+
+.production_navigation_links a {
+    color: $base-color;
+}
+
+.production_navigation_links a:hover {
+    color: $highlight-color;
+}
+
+.production_navigation .tickets-button {
+    height: 100%;
+    padding: 0px 10px;
+    align-items: center;
+    justify-content: center;
+}

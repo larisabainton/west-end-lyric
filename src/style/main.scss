@@ -65,3 +65,17 @@ main {
         object-position: center top;
     }
 }
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.visible {
+    display: flex;
+}
+
+.not-visible {
+    display: none;
+}
