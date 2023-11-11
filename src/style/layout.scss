@@ -67,7 +67,6 @@ $drop-down-menu-width: 100px;
     display:none;
     flex-direction: column;
     background-color: white;
-    width: $drop-down-menu-width;
 }
 
 .desktop-menu .header_sub-menu {
@@ -82,7 +81,7 @@ $drop-down-menu-width: 100px;
 .header_sub-menu li {
     position: relative;
     text-align: center;
-    padding: .25vh .25vw;
+    padding: 1vh .5vw;
 }
 
 li:has(>.header_sub-link:hover),
