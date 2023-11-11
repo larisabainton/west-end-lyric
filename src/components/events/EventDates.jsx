@@ -1,12 +1,9 @@
 import React from "react";
+import TicketsButton from "../ticketsButton";
 
 const getTickets = ticketsLink => {
     if (ticketsLink) {
-        return (
-        <div className="event_tickets">
-            <a target="_blank" rel="noreferrer" href={ticketsLink}>Get Tickets</a>
-        </div>
-        )
+        return <TicketsButton ticketsLink={ticketsLink} />
     }
 }
 

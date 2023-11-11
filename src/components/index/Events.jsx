@@ -1,6 +1,7 @@
 import { Link } from 'gatsby';
 import React from 'react';
 import { renderRichText } from 'gatsby-source-contentful/rich-text';
+import TicketsButton from '../ticketsButton';
 
 const getLink = (productionId, pages) => {
     const matchingPage = pages.find(page => page.node.pageContext && page.node.pageContext.id === productionId);
@@ -34,11 +35,7 @@ const getDate = eventDate => {
 
 const getTickets = ticketsLink => {
     if (ticketsLink) {
-        return (
-            <div className="eventList_event--tickets">
-                <a target="_blank" rel="noreferrer" href={ticketsLink}>Get Tickets</a>
-            </div>
-        )
+        return <TicketsButton ticketsLink={ticketsLink}/>
     }
 }
 

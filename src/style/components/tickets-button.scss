@@ -1,0 +1,16 @@
+.tickets-button {
+    background-color: $accent-color;
+    color: white;
+    font-family: $title-font;
+    font-size: $subtitle-font-size;
+    padding: 8px 10px;
+}
+
+.tickets-button:hover {
+    background-color: $accent-color--dark;
+}
+
+.tickets-button a,
+.tickets-button a:visited {
+    color: white;
+}
