@@ -1,0 +1,105 @@
+.contact-page .section-title {
+    padding: 5vh 0;
+}
+
+.contact-page_section {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.contact-section-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: $title-font;
+    font-size: 20pt;
+    width: 50%;
+}
+
+.contact-page_section:nth-child(odd) {
+    .contact-section-title {
+        background-color: $base-color;
+    }
+}
+
+.contact-page_section:nth-child(even) {
+    flex-direction: row-reverse;
+
+    .contact-section-title {
+        background-color: $highlight-color;
+    }
+}
+
+.contact-page_section:first-child {
+    form {
+        border-top: $accent-color 2px solid;
+    }
+}
+
+.contact-page_section:last-child {
+    form {
+        border-bottom: $accent-color 2px solid;
+    }
+}
+
+.contact-page_section form {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    padding: 10% 5%;
+}
+
+.contact-page {
+    ul {
+        padding: 0px;
+    }
+
+    label {
+        padding: 7px 0px 3px;
+    }
+
+    .checkbox {
+        padding: 2px 0px;
+    }
+
+    input[type="submit"] {
+        margin: 7px 0;
+        background-color: $accent-color--light;
+        color: $base-color;
+        font-family: $title-font;
+        font-size: 12pt;
+        border: $accent-color 1px solid;
+    }
+
+    input[type="submit"]:hover {
+        background-color: $accent-color;
+    }
+
+    input {
+        border: black solid 1px;
+        padding: 5px;
+    }
+}
+
+.contact-title {
+    padding: 7px 0px 2px;
+}
+
+@media screen and (max-width: 600px) {
+    .contact-page_section,
+    .contact-page_section:nth-child(even) {
+        flex-direction: column;
+    }
+
+    .contact-section-title {
+        width: 100%;
+        padding: 5vh 1vw;
+        text-align: center;
+    }
+
+    .contact-page_section form {
+        width: 85%;
+    }
+}
