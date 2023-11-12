@@ -61,9 +61,9 @@ const PersonnelPage = ({ data }) => {
                         {displayTeam(data.contentfulTeamMember)}
                     </div>
                 </div>
-                <div className="personnel-bio">{renderRichText(bio)}</div>
                 {displayRoles(roles)}
                 {displayStaff(staffArray)}
+                <div className="personnel-bio">{renderRichText(bio)}</div>
             </main>
         </Layout>
     )

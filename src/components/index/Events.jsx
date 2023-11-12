@@ -3,12 +3,6 @@ import React from 'react';
 import { renderRichText } from 'gatsby-source-contentful/rich-text';
 import TicketsButton from '../ticketsButton';
 
-const getLink = (productionId, pages) => {
-    const matchingPage = pages.find(page => page.node.pageContext && page.node.pageContext.id === productionId);
-
-    return matchingPage.node.path;
-}
-
 const getDate = eventDate => {
     const date = new Date(eventDate);
 
@@ -50,13 +44,25 @@ const showTicketsOrVenue = (ticketsLink, venue) => {
     }
 }
 
-const getDescription = production => {
-    if (production && production.shortDescription) {
-        return (
-        <div className="eventList_event_description">
-            {renderRichText(production.shortDescription)}
-        </div>)
+const getHiddenSection = (production, pages) => {
+    if (!production || !production.shortDescription) {
+        return;
     }
+
+    const matchingPage = pages.find(page => page.node.pageContext && page.node.pageContext.id === production.id);
+
+    if (!matchingPage) {
+        return;
+    }
+
+    return (
+        <div className="eventList_event--hidden">
+            <div className="eventList_event_description">
+                {renderRichText(production.shortDescription)}
+            </div>
+            <Link className="eventList_event_link" to={matchingPage.node.path}>Learn More</Link>
+        </div>
+    )
 }
 
 const Events = ({events, pages}) => {
@@ -66,19 +72,19 @@ const Events = ({events, pages}) => {
         <div className="events" id="events">
             <div className="events_title">Upcoming Performances</div>
             <ul className="events_eventList">
-                {events.map(({ production: productions, eventDate, venue, eventTitle, ticketsLink }, i) => (
+                {events.map(({ production: productions, eventDate, venue, eventTitle, ticketsLink }, i) => {
+                    const production = productions[0];
+                    
+                    return (
                     <li className="eventList_event" key={`${eventTitle} - ${i}`}>
                         <div className="eventList_event--displayed">
                             {getDate(eventDate)}
                             <div className="eventList_event--title">{eventTitle}</div>
                             {showTicketsOrVenue(ticketsLink, venue)}
                         </div>
-                        <div className="eventList_event--hidden">
-                            {getDescription(productions[0])}
-                            <Link className="eventList_event_link" to={getLink(productions[0].id, pages)}>Learn More</Link>
-                        </div>
+                        {getHiddenSection(production, pages)}
                     </li>
-                ))}
+                )})}
             </ul>
         </div>
     )

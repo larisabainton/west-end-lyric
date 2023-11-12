@@ -28,6 +28,10 @@ const onChange = (inView, entry) => {
 const Navigation = ({ ticketsLink }) => {
     const { ref } = useInView({ onChange })
 
+    if (!ticketsLink) {
+        return;
+    }
+
     return (
         <div className="navigation-wrapper" ref={ref}>
             <div className="production_navigation" id="production_navigation">

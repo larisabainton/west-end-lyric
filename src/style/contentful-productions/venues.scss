@@ -36,3 +36,21 @@
     width: 400px;
     height: 300px;
 }
+
+@media screen and (max-width: 600px) {
+    .production_venues ul {
+        padding: 0px;
+    }
+    
+    .production_venues_list {
+        flex-direction: column;
+    }
+
+    .production_venues_list-item {
+        padding-bottom: 2vh;
+    }
+
+    .venue_image {
+        width: 100%;
+    }
+}

@@ -76,6 +76,11 @@ $artist-border: $accent-color 2px solid;
     }
 
     .artist {
-        min-width: 225px;
+        width: 100%;
+    }
+
+    .artist-text {
+        text-align: center;
+        flex: 1;
     }
 }

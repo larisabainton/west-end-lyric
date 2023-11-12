@@ -31,3 +31,9 @@
     align-items: center;
     justify-content: center;
 }
+
+@media screen and (max-width: 600px) {
+    .production_navigation .tickets-button {
+        font-size: 12pt;
+    }
+}

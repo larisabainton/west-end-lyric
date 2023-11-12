@@ -16,3 +16,15 @@
 .event_date .tickets-button {
     margin-top: 10px;
 }
+
+@media screen and (max-width: 600px) {
+    .production_dates {
+        flex-direction: column;
+    }
+
+    .event_date {
+        padding-top: 2vh;
+    }
+
+    
+}
