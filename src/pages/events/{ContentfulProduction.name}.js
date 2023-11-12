@@ -10,7 +10,7 @@ import Navigation from "../../components/events/Navigation.jsx";
 import Venues from "../../components/events/Venues.jsx";
 
 const getCoverPhoto = productionPhoto => {
-    return productionPhoto && <GatsbyImage className="production_cover-photo" image= {getImage(productionPhoto)} alt=""/>
+    return productionPhoto && <GatsbyImage className="production_cover-photo" image= {getImage(productionPhoto)} style={{position: "absolute"}} alt=""/>
 }
 
 const Production = ({ data }) => {
