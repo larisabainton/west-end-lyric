@@ -64,7 +64,8 @@ $drop-down-menu-width: 100px;
 }
 
 .header_sub-menu {
-    display:none;
+    display: none;
+    max-width: 150px;
     flex-direction: column;
     background-color: white;
 }

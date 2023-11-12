@@ -15,7 +15,8 @@ const displayTeam = teamRole => {
 const displayStaff = staffArray => {
     if (staffArray.length) {
         return (
-            <ul className="personnel-title">Creative Direction 
+            <ul className="personnel-title">
+                <div className="personnel-section-title">Creative Direction</div>
                 {staffArray.map(({ production, title}, i) => {
                     const productionName = production[0].name;
                     const year = new Date(production[0].events[0].eventDate).getFullYear();
@@ -32,7 +33,8 @@ const displayStaff = staffArray => {
 const displayRoles = roles => {
     if (roles.length) {
         return (
-        <ul className="personnel-title">Roles
+        <ul className="personnel-title">
+            <div className="personnel-section-title">Roles</div>
             {roles.map(({ roleName, event }, i) => {
                 const productionName = event[0].production[0].name;
                 const year = new Date(event[0].eventDate).getFullYear();
@@ -52,10 +54,13 @@ const PersonnelPage = ({ data }) => {
     return (
         <Layout>
             <main className="personnel-page">
-                <GatsbyImage image={getImage(headshot)} alt={`${name} headshot`}/>
-                <div className="personnel-name">{name}</div>
-                {displayTeam(data.contentfulTeamMember)}
-
+                <div className="personnel-headshot-name">
+                    <GatsbyImage image={getImage(headshot)} className="circular-headshot" alt={`${name} headshot`}/>
+                    <div className="personnel-info">
+                        <div className="personnel-name">{name}</div>
+                        {displayTeam(data.contentfulTeamMember)}
+                    </div>
+                </div>
                 <div className="personnel-bio">{renderRichText(bio)}</div>
                 {displayRoles(roles)}
                 {displayStaff(staffArray)}

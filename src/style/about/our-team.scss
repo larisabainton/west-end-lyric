@@ -1,0 +1,40 @@
+.our-team li {
+    list-style-type: none;
+}
+
+.teamMembers-list {
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+    padding: 5vh 0;
+}
+
+.teamMembers-list-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3vh;
+}
+
+.teamMembers-list-item_name {
+    color: $highlight-color;
+    font-size: $subtitle-font-size;
+    font-family: $title-font;
+}
+
+.teamMembers-list-item_name:hover {
+    color: $highlight-color--lighter;
+}
+
+.teamMembers-list-item_job {
+    color: $accent-color;
+    font-weight: bold;
+    font-size: 16pt;
+}
+
+
+@media screen and (max-width: 600px) {
+    .teamMembers-list-item {
+        flex-direction: column;
+    }
+}

@@ -9,12 +9,19 @@ const onChange = (inView, entry) => {
 
     if (entry.boundingClientRect.bottom <= 0) {
         navbar.classList.add('sticky');
-        ticketsButton.classList.add('visible');
-        ticketsButton.classList.remove('not-visible');
+
+        if (ticketsButton) {
+            ticketsButton.classList.add('visible');
+            ticketsButton.classList.remove('not-visible');
+        }
     } else if (entry.boundingClientRect.bottom > 0) {
         navbar.classList.remove('sticky');
-        ticketsButton.classList.add('not-visible')
-        ticketsButton.classList.remove('visible')
+
+        if (ticketsButton) {
+            ticketsButton.classList.add('not-visible')
+            ticketsButton.classList.remove('visible')
+        }
+        
     }
 }
 

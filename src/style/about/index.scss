@@ -1,0 +1,15 @@
+@import "our-mission";
+@import "our-sponsors";
+@import "our-team";
+
+.our-sponsors .section-title,
+.our-team .section-title {
+    padding-top: 2vh;
+}
+
+// card to culture
+.card-to-culture-page .card-to-culture {
+    border: none;
+    margin-top: 0px;
+}
+
