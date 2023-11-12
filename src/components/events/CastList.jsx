@@ -8,14 +8,6 @@ const getLink = (name, pages) => {
     return page.node.path;
 }
 
-const getHeadshot = (name, headshot) => {
-    const image = getImage(headshot);
-    
-    if (image) {
-        return <GatsbyImage className="circular-headshot" image={image} alt={`${name} headshot`}/>
-    }
-}
-
 const getCastList = (events, pages) => {
     const castList = [];
     
@@ -56,10 +48,10 @@ const getCast = (events, pages) => {
             <ul className="cast-list">
                 {castList.map(({ name, roleName, headshot, dates, link}, i) => {
                     const datesArray = dates.sort().map(date => new Date(date).toLocaleDateString("en-US", { month: 'short', day: 'numeric'}));
-
+                    const image = getImage(headshot);
                     return (
                         <li className="cast-member artist" key={`cast-member-${i}`}>
-                            {getHeadshot(name, headshot)}
+                            <GatsbyImage className="circular-headshot" image={image} alt={`${name} headshot`}/>
                             <div className="artist-text">
                                 <div className="cast-member_role">{roleName}</div>
                                 <Link className="cast-member_name artist-name"to={link}>{name}</Link>

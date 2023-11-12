@@ -20,19 +20,20 @@ const Production = ({ data }) => {
     const { events, longDescription, name, productionPhoto, staff } = production;
 
     return (
-    <Layout>
-        <main className="production-page">
-            {getCoverPhoto(productionPhoto)}
-            <div className="production_title">{name}</div>
-            <EventDates events={events} />
-            <Navigation ticketsLink ={events[0].ticketsLink} />
-            <div className="production_about" id="production_about">
-                {longDescription && renderRichText(longDescription)}
-            </div>
-            <CastList pages={pages} events={events} staff={staff}/>
-            <Venues events={events} />
-        </main>
-    </Layout>)
+        <Layout>
+            <main className="production-page">
+                {getCoverPhoto(productionPhoto)}
+                <div className="production_title">{name}</div>
+                <EventDates events={events} />
+                <Navigation ticketsLink ={events[0].ticketsLink} />
+                <div className="production_about" id="production_about">
+                    {longDescription && renderRichText(longDescription)}
+                </div>
+                <CastList pages={pages} events={events} staff={staff}/>
+                <Venues events={events} />
+            </main>
+        </Layout>
+    )
 }
 
 export default Production;
