@@ -1,4 +1,6 @@
 import React from "react";
+import '../style/main.scss';
+import '@fortawesome/fontawesome-svg-core/styles.css';
 
 import CardToCulture from "../../components/index/CardToCulture";
 import Layout from "../../components/layout.jsx";

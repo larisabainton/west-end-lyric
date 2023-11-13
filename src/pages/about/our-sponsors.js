@@ -1,4 +1,7 @@
 import React from 'react';
+import '../style/main.scss';
+import '@fortawesome/fontawesome-svg-core/styles.css';
+
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { renderRichText } from 'gatsby-source-contentful/rich-text';
 import { graphql } from 'gatsby';

@@ -1,4 +1,6 @@
 import React from "react";
+import '../style/main.scss';
+import '@fortawesome/fontawesome-svg-core/styles.css';
 import { Link, graphql } from "gatsby";
 
 import Layout from '../../components/layout';
