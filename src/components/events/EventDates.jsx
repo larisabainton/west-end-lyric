@@ -37,7 +37,9 @@ const EventDates = ({ events }) => {
     
     return (
         <div className="production_dates">
-            {events.map(({ eventDate, ticketsLink }, i) => {
+            {events
+            .sort((node1, node2) => new Date(node1.eventDate) - new Date(node2.eventDate))
+            .map(({ eventDate, ticketsLink }, i) => {
                 return (
                     <div className="event_date" key={`event_date-${i}`}>
                         {getDate(eventDate)}

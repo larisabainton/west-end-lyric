@@ -1,5 +1,5 @@
 import React from "react";
-import '../style/main.scss';
+import '../../style/main.scss';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 
 import CardToCulture from "../../components/index/CardToCulture";
