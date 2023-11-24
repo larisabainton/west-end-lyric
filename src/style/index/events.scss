@@ -92,6 +92,15 @@
     flex: 2;
 }
 
+.eventList_event--title a,
+.eventList_event--title a:visited {
+    color: $highlight-color;
+}
+
+.eventList_event--title a:hover {
+    color: $highlight-color--lighter;
+}
+
 .eventList_event--location {
     font-size: $small-font-size;
     color: $base-color;

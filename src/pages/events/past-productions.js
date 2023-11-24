@@ -2,6 +2,7 @@ import React from "react";
 import '../../style/main.scss';
 import Layout from "../../components/layout";
 import { Link, graphql } from "gatsby";
+import getPathForProduction from "../../functions/getPathForProduction";
 
 const PastProductionsPage = ({ data }) => {
     const productionsArray = data.allContentfulProduction.nodes;
@@ -16,8 +17,8 @@ const PastProductionsPage = ({ data }) => {
                 <div className="section-title">Past Productions</div>
                 <ul className="past-productions_list">
                     {pastProductions.map(({ name, id }) => {
-                        const matchingPage = pagesArray.find(page => page.node.pageContext && page.node.pageContext.id === id);
-                        return <li className="past-productions_list-item"><Link to ={matchingPage.node.path}>{name}</Link></li>
+                        const linkPath = getPathForProduction(id, pagesArray)
+                        return <li className="past-productions_list-item"><Link to ={linkPath}>{name}</Link></li>
                     })}
                 </ul>
             </main>

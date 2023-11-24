@@ -2,6 +2,7 @@ import { Link } from 'gatsby';
 import React from 'react';
 import { renderRichText } from 'gatsby-source-contentful/rich-text';
 import TicketsButton from '../ticketsButton';
+import getPathForProduction from '../../functions/getPathForProduction';
 
 const getDate = eventDate => {
     const date = new Date(eventDate);
@@ -44,14 +45,8 @@ const showTicketsOrVenue = (ticketsLink, venue) => {
     }
 }
 
-const getHiddenSection = (production, pages) => {
+const getHiddenSection = (production, linkPath) => {
     if (!production || !production.shortDescription) {
-        return;
-    }
-
-    const matchingPage = pages.find(page => page.node.pageContext && page.node.pageContext.id === production.id);
-
-    if (!matchingPage) {
         return;
     }
 
@@ -60,7 +55,7 @@ const getHiddenSection = (production, pages) => {
             <div className="eventList_event_description">
                 {renderRichText(production.shortDescription)}
             </div>
-            <Link className="eventList_event_link" to={matchingPage.node.path}>Learn More</Link>
+            <Link className="eventList_event_link" to={linkPath}>Learn More</Link>
         </div>
     )
 }
@@ -77,15 +72,19 @@ const Events = ({events, pages}) => {
                 .filter(({ eventDate }) => (new Date(eventDate).getTime() - new Date().getTime() > 0))
                 .map(({ production: productions, eventDate, venue, eventTitle, ticketsLink }, i) => {
                     const production = productions[0];
+                    const linkPath = getPathForProduction(production.id, pages);
+
 
                     return (
                     <li className="eventList_event" key={`${eventTitle} - ${i}`}>
                         <div className="eventList_event--displayed">
                             {getDate(eventDate)}
-                            <div className="eventList_event--title">{eventTitle}</div>
+                            <div className="eventList_event--title">
+                                <Link to={linkPath}>{eventTitle}</Link>
+                            </div>
                             {showTicketsOrVenue(ticketsLink, venue)}
                         </div>
-                        {getHiddenSection(production, pages)}
+                        {getHiddenSection(production, linkPath)}
                     </li>
                 )})}
             </ul>

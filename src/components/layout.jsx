@@ -3,6 +3,7 @@ import { Link, graphql, useStaticQuery } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
 
 import DonateButton from "./donateButton";
+import getPathForProduction from '../functions/getPathForProduction';
 
 const getLinksObject = (productionArray, pagesArray) => {
     const linksArray = [];
@@ -14,8 +15,7 @@ const getLinksObject = (productionArray, pagesArray) => {
             .filter(date => (date.getTime() - new Date().getTime() > 0));
 
         if (eventDates.length) {
-            const matchingPage = pagesArray.find(page => page.node.pageContext && page.node.pageContext.id === id);
-            linksArray.push({ name, link: matchingPage.node.path })
+            linksArray.push({ name, link: getPathForProduction(id, pagesArray) })
         }
     });
 
@@ -52,6 +52,7 @@ const menu = (productionArray, pagesArray, donateButton) => {
                     {getEventsMenu(productionArray, pagesArray)}
                 </ul>
             </li>
+            <li className="header_link-wrapper_list-item"><Link to="/media" className="header_link">Media</Link></li>
             <li className="header_link-wrapper_list-item"><Link to="/contact" className="header_link">Contact</Link></li>
         </ul>
     )
