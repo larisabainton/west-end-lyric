@@ -45,25 +45,29 @@ const getCast = (events, pages) => {
     
     if (castList) {
         return (
-            <ul className="cast-list">
-                {castList.map(({ name, roleName, headshot, dates, link}, i) => {
-                    const datesArray = dates.sort().map(date => new Date(date).toLocaleDateString("en-US", { month: 'short', day: 'numeric'}));
-                    const image = getImage(headshot);
-                    return (
-                        <li className="cast-member artist" key={`cast-member-${i}`}>
-                            <GatsbyImage className="circular-headshot" image={image} alt={`${name} headshot`}/>
-                            <div className="artist-text">
-                                <div className="cast-member_role">{roleName}</div>
-                                <Link className="cast-member_name artist-name"to={link}>{name}</Link>
-                                <div className="cast-member_dates">
-                                    <div>Performing</div>
-                                    <div>{datesArray.join(", ")}</div>
+            <div className="cast-section">
+                <div className="production_artists_cast-title section-title">Cast</div>
+                <ul className="cast-list">
+                    {castList.map(({ name, roleName, headshot, dates, link}, i) => {
+                        const datesArray = dates.sort().map(date => new Date(date).toLocaleDateString("en-US", { month: 'short', day: 'numeric'}));
+                        const image = getImage(headshot);
+                        return (
+                            <li className="cast-member artist" key={`cast-member-${i}`}>
+                                <GatsbyImage className="circular-headshot" image={image} alt={`${name} headshot`}/>
+                                <div className="artist-text">
+                                    <div className="cast-member_role">{roleName}</div>
+                                    <Link className="cast-member_name artist-name"to={link}>{name}</Link>
+                                    <div className="cast-member_dates">
+                                        <div>Performing</div>
+                                        <div>{datesArray.join(", ")}</div>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
-                    )
-                })}
-            </ul>
+                            </li>
+                        )
+                    })}
+                </ul>
+            </div>
+            
         )
     }
 }
@@ -71,25 +75,29 @@ const getCast = (events, pages) => {
 const getStaff = (staffArray, pages) => {
     if (staffArray && staffArray.length) {
         return (
-            <ul className="staff">
-                {staffArray.sort((staff1, staff2) => staff1.title - staff2.title)
-                .map((staff, i) => {
-                    const name = staff.personnel.name;
-                    const image = getImage(staff.personnel.headshot)
-                    const title = staff.title;
-                    const link = getLink(name, pages);
+            <div className="staff-section">
+                <div className="production_artists_staff-title section-title">Creative Team</div>
+                <ul className="staff">
+                    {staffArray.sort((staff1, staff2) => staff1.title - staff2.title)
+                    .map((staff, i) => {
+                        const name = staff.personnel.name;
+                        const image = getImage(staff.personnel.headshot)
+                        const title = staff.title;
+                        const link = getLink(name, pages);
 
-                    return (
-                        <li className="staff-member_info artist" key={`staff-member-${i}`}>
-                            <GatsbyImage className="circular-headshot" image={image} alt={`${name} headshot`}/>
-                            <div className="artist-text">
-                                <div className="staff-member_title">{title}</div>
-                                <Link to={link} className="staff-member_name artist-name">{name}</Link>
-                            </div>
-                            
-                        </li>
-                )})}
-            </ul>
+                        return (
+                            <li className="staff-member_info artist" key={`staff-member-${i}`}>
+                                <GatsbyImage className="circular-headshot" image={image} alt={`${name} headshot`}/>
+                                <div className="artist-text">
+                                    <div className="staff-member_title">{title}</div>
+                                    <Link to={link} className="staff-member_name artist-name">{name}</Link>
+                                </div>
+                                
+                            </li>
+                    )})}
+                </ul>
+            </div>
+            
         )
         }
     }
@@ -102,9 +110,7 @@ const CastList = ({ events, staff, pages }) => {
     
     return (
         <div className="production_artists" id="#production-artists">
-            <div className="production_artists_staff-title section-title">Creative Team</div>
             {getStaff(staff, pages)}
-            <div className="production_artists_cast-title section-title">Cast</div>
             {getCast(events, pages)}
         </div>
     )
