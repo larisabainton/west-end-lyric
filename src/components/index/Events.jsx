@@ -72,9 +72,12 @@ const Events = ({events, pages}) => {
         <div className="events" id="events">
             <div className="events_title">Upcoming Performances</div>
             <ul className="events_eventList">
-                {events.map(({ production: productions, eventDate, venue, eventTitle, ticketsLink }, i) => {
+                {events
+                // filter out events that have passed
+                .filter(({ eventDate }) => (new Date(eventDate).getTime() - new Date().getTime() > 0))
+                .map(({ production: productions, eventDate, venue, eventTitle, ticketsLink }, i) => {
                     const production = productions[0];
-                    
+
                     return (
                     <li className="eventList_event" key={`${eventTitle} - ${i}`}>
                         <div className="eventList_event--displayed">

@@ -10,14 +10,16 @@ const getLinksObject = (productionArray, pagesArray) => {
     productionArray.forEach(({ name, id, events }) => {
         const eventDates = events
             .map(event => new Date(event.eventDate))
-            // filter if production date is in the past (before today's date)
-            .filter(date => date - new Date());
+            // filter if production has already happened
+            .filter(date => (date.getTime() - new Date().getTime() > 0));
 
         if (eventDates.length) {
             const matchingPage = pagesArray.find(page => page.node.pageContext && page.node.pageContext.id === id);
             linksArray.push({ name, link: matchingPage.node.path })
         }
     });
+
+    linksArray.push({ name: "Past Productions", link: '/events/past-productions'})
 
     return linksArray;
 }
