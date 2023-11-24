@@ -1,0 +1,25 @@
+.past-productions_page {
+    display: flex;
+    flex-direction: column;
+    gap: 3vh;
+    align-items: center;
+    padding-top: 2vh;
+
+    ul {
+        padding: 0;
+    }
+}
+
+.past-productions_list-item {
+    font-size: $subtitle-font-size;
+    font-family: $title-font;
+}
+
+.past-productions_list-item a,
+.past-productions_list-item a:visited {
+    color: $highlight-color;
+}
+
+.past-productions_list-item a:hover {
+    color: $highlight-color--light;
+}
