@@ -8,6 +8,7 @@
 @import 'contentful-personnel';
 @import 'contact';
 @import 'events';
+@import 'media';
 
 
 html {
@@ -44,6 +45,10 @@ main {
     flex: 2;
 }
 
+ul {
+    padding-left: 0px;
+}
+
 .section-title {
     color: $base-color;
     font-size: $title-font-size;
@@ -55,6 +60,17 @@ main {
     color: $highlight-color;
     font-size: $subtitle-font-size;
     font-family: $title-font;
+}
+
+.link-title,
+.link-title:visited {
+    color: $highlight-color;
+    font-size: $subtitle-font-size;
+    font-family: $title-font;
+}
+
+.link-title:hover {
+    color: $highlight-color--lighter;
 }
 
 .circular-headshot {

@@ -1,0 +1,24 @@
+.media_list-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.media_list-item_title {
+    padding: 1vh 0;
+}
+
+.media_photos-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2vw;
+    align-items: center;
+    justify-content: center;
+    padding: 1vh 0;
+}
+
+.media-photo {
+    width: 300px;
+    height: 300px;
+}
