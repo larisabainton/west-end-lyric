@@ -16,14 +16,14 @@ const MediaPage = ({ data }) => {
             <main className="media-page">
                 <div className="section-title">Media</div>
                 <ul className="media_list">
-                    {productions.map(({ id, name, productionPhotos }) => {
+                    {productions.map(({ id, name, productionPhotos }, i) => {
                         const linkPath = getPathForProduction(id, pagesArray);
 
                         return(
-                            <li className="media_list-item">
+                            <li className="media_list-item" key={`media_list-item-${i}`}>
                                 <Link to={linkPath} className="link-title media_list-item_title">{name}</Link>
                                 <ul className="media_photos-list">
-                                    {productionPhotos.map(photo => <GatsbyImage className="media-photo" image={getImage(photo.gatsbyImageData)} alt=""/>)}
+                                    {productionPhotos.map((photo, j) => <li key={`media-${i}_photo-${j}`}><GatsbyImage className="media-photo" image={getImage(photo.gatsbyImageData)} alt=""/></li>)}
                                 </ul>
                             </li>
                         )
