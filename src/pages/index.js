@@ -19,6 +19,10 @@ import '@fortawesome/fontawesome-svg-core/styles.css';
 const IndexPage = ({ data }) => {
   const eventsArray = data.allContentfulEvent.nodes;
   const pagesArray = data.allSitePage.edges;
+  const teamMembers = data.allContentfulPersonnel.nodes
+
+  const personnelPages = pagesArray.filter(({ node }) => node.path.match(/personnel/));
+  const eventPages = pagesArray.filter(({ node }) => node.path.match(/events/));
 
   return (
     <div>
@@ -27,8 +31,8 @@ const IndexPage = ({ data }) => {
         <main>
           <Cover />
           <AboutUs />
-          <Events events={eventsArray} pages={pagesArray}/>
-          <OurTeam />
+          <Events events={eventsArray} pages={eventPages}/>
+          <OurTeam pages={personnelPages} teamMembers={teamMembers}/>
           <CardToCulture />
           <Sponsors />
           <Contact />
@@ -44,7 +48,7 @@ export const Head = () => <title>West End Lyric</title>
 
 export const query = graphql`
   query IndexPageQuery {
-    allSitePage(filter: {path: {regex: "/events/"}}) {
+    allSitePage {
       edges {
         node {
           path
@@ -67,6 +71,21 @@ export const query = graphql`
                   raw
               }
           }
+      }
+    }
+    allContentfulPersonnel(
+      filter: {team_member: {elemMatch: {orderNumber: {ne: null}}}}
+      sort: {team_member: {orderNumber: ASC}}
+  ) {
+      nodes {
+        team_member {
+          jobTitle
+          orderNumber
+        }
+        name
+        headshot {
+          gatsbyImageData
+        }
       }
     }
   }

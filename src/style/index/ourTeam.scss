@@ -41,10 +41,15 @@
     margin-top: 1em;
 }   
 
-.teamMember_name {
+.teamMember_name,
+.teamMember_name:visited {
     color: $highlight-color;
     font-size: $subtitle-font-size;
     font-family: $title-font;
+}
+
+.teamMember_name:hover {
+    color: $highlight-color--lighter;
 }
 
 .teamMember_jobTitle {
