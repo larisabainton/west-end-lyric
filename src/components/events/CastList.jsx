@@ -1,12 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
-
-const getLink = (name, pages) => {
-    const page = pages.find(page => page.node.pageContext && page.node.pageContext.name === name)
-
-    return page.node.path;
-}
+import getPathForPersonnel from "../../functions/getPathForPersonnel";
 
 const getCastList = (events, pages) => {
     const castList = [];
@@ -23,7 +18,7 @@ const getCastList = (events, pages) => {
                     name: role.castMember.name,
                     headshot: role.castMember.headshot,
                     dates: [ event.eventDate ],
-                    link: getLink(role.castMember.name, pages),
+                    link: getPathForPersonnel(role.castMember.name, pages),
                 })
             }
        })
@@ -83,7 +78,7 @@ const getStaff = (staffArray, pages) => {
                         const name = staff.personnel.name;
                         const image = getImage(staff.personnel.headshot)
                         const title = staff.title;
-                        const link = getLink(name, pages);
+                        const link = getPathForPersonnel(name, pages);
 
                         return (
                             <li className="staff-member_info artist" key={`staff-member-${i}`}>
