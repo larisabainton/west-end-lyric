@@ -18,7 +18,7 @@ const displayTeam = teamRole => {
 const displayStaff = staffArray => {
     if (staffArray.length) {
         return (
-            <ul className="personnel-title">
+            <ul className="personnel-list">
                 <div className="personnel-section-title">Creative Direction</div>
                 {staffArray.map(({ production, title}, i) => {
                     const productionName = production[0].name;
@@ -36,7 +36,7 @@ const displayStaff = staffArray => {
 const displayRoles = roles => {
     if (roles.length) {
         return (
-        <ul className="personnel-title">
+        <ul className="personnel-list">
             <div className="personnel-section-title">Roles</div>
             {roles.map(({ roleName, event }, i) => {
                 const productionName = event[0].production[0].name;
