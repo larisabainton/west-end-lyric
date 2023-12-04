@@ -9,6 +9,9 @@ module.exports = {
   pathPrefix: '/west-end-lyric', // https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/how-gatsby-works-with-github-pages/
   siteMetadata: {
     siteUrl: `https://www.westendlyric.com`,
+    title: 'West End Lyric',
+    description: 'West End Lyric is an all women led, Boston-based performing arts collective',
+
   },
   plugins: [
     'gatsby-plugin-sass',

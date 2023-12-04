@@ -3,6 +3,19 @@ import { Link } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import getPathForPersonnel from "../../functions/getPathForPersonnel";
 
+
+// only list performance dates for multiple performances
+const getCastDates = (numberOfEvents, datesArray) => {
+    if (numberOfEvents > 1) {
+        return (
+            <div className="cast-member_dates">
+                <div>Performing</div>
+                <div>{datesArray.join(", ")}</div>
+            </div>
+        )
+    }
+}
+
 const getCastList = (events, pages) => {
     const castList = [];
     
@@ -52,10 +65,7 @@ const getCast = (events, pages) => {
                                 <div className="artist-text">
                                     <div className="cast-member_role">{roleName}</div>
                                     <Link className="cast-member_name artist-name"to={link}>{name}</Link>
-                                    <div className="cast-member_dates">
-                                        <div>Performing</div>
-                                        <div>{datesArray.join(", ")}</div>
-                                    </div>
+                                    {getCastDates(events.length, datesArray)}
                                 </div>
                             </li>
                         )

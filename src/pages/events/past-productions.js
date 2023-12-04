@@ -16,9 +16,9 @@ const PastProductionsPage = ({ data }) => {
             <main className="past-productions_page">
                 <div className="section-title">Past Productions</div>
                 <ul className="past-productions_list">
-                    {pastProductions.map(({ name, id }) => {
+                    {pastProductions.map(({ name, id }, i) => {
                         const linkPath = getPathForProduction(id, pagesArray)
-                        return <li className="past-productions_list-item"><Link to ={linkPath}>{name}</Link></li>
+                        return <li className="past-productions_list-item" key={`production-${i}`}><Link to ={linkPath}>{name}</Link></li>
                     })}
                 </ul>
             </main>

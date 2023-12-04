@@ -1,6 +1,13 @@
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import React from "react";
 
+// only list date if there are multiple venues
+const listDate = (oneVenue, eventDate) => {
+    if (!oneVenue) {
+        return <div>{new Date(eventDate).toLocaleDateString("en-US", { month: 'short', day: 'numeric'})}</div>
+    }
+}
+
 const Venues = ({ events }) => {
     const oneVenue = events.every(({ venue }) => venue.name === events[0].venue.name)
 
@@ -17,7 +24,7 @@ const Venues = ({ events }) => {
                             <GatsbyImage className="venue_image" image={getImage(photo)} alt={`${name} image`}/>
                             <a className="production_venue-name" href={website}>{name}</a>
                             <div className="production_venue-address">{address}</div>
-                            <div>{new Date(eventDate).toLocaleDateString("en-US", { month: 'short', day: 'numeric'})}</div>
+                            {listDate(oneVenue, eventDate)}
                         </li>
                     )
                 })}
