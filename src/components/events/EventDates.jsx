@@ -1,5 +1,7 @@
 import React from "react";
 import TicketsButton from "../ticketsButton";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import HTMLFlipBook from "react-pageflip";
 
 const getTickets = ticketsLink => {
     if (ticketsLink) {
@@ -29,12 +31,7 @@ const getDate = eventDate => {
     
 }
 
-const EventDates = ({ events }) => {
-    
-    if (!events.length) {
-        return;
-    }
-    
+const createDatesSection = (events) => {
     return (
         <div className="production_dates">
             {events
@@ -49,6 +46,47 @@ const EventDates = ({ events }) => {
             })}
         </div>
     )
+}
+
+const createProgram = (programPages) => {
+    return (
+        <div className="program">
+             <div className="program-title section-title">Program</div>
+             <HTMLFlipBook 
+                width={400} 
+                height={600} 
+                showCover={true}
+                className="program-book"
+            >
+                {programPages
+                    .sort((page1, page2) => parseInt(page1.filename) - parseInt(page2.filename))
+                    .map((page, i) => {
+                        return <div key={`program-pages-${i}`}><GatsbyImage image={getImage(page.gatsbyImageData)} alt={`program page ${i}`} /></div>
+                    })
+                }
+            </HTMLFlipBook>
+        </div>
+       
+    )
+}
+
+const EventDates = ({ events, programPages }) => {
+    
+    if (!events.length) {
+        return;
+    }
+
+    const isPastEvent = events.every(({ eventDate }) => (new Date(eventDate).getTime() - new Date().getTime()) < 0)
+
+    if (isPastEvent) {
+        if (programPages) {
+            return createProgram(programPages)
+        }
+    } else if (!isPastEvent) {
+        return createDatesSection(events);
+    }
+    
+    
 };
 
 export default EventDates;
