@@ -11,9 +11,9 @@ const WelcomeText = () => (
     
 )
 
-const Cover = (coverPhoto) => {
+const Cover = ({ coverPhoto }) => {
 
-    const photo = !coverPhoto
+    const photo = !!coverPhoto
         ? <GatsbyImage alt="" image={getImage(coverPhoto)} />
         : <StaticImage src="../../images/cover-photo.jpg" alt="Jessica Bloch performing" />
 

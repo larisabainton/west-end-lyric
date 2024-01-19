@@ -101,6 +101,9 @@ export const query = graphql`
           buttonText
           endDate
           startDate
+          coverPhoto {
+            gatsbyImageData
+          }
       }
     }
     allContentfulPersonnel(
