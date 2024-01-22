@@ -17,6 +17,19 @@
     margin-top: 10px;
 }
 
+.program {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    background-color: $neutral-color;
+    padding: 2% 0 5%;
+}
+
+.program-book {
+    padding-top: 1%;
+}
+
 @media screen and (max-width: 600px) {
     .production_dates {
         flex-direction: column;

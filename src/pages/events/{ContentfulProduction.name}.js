@@ -19,14 +19,14 @@ const Production = ({ data }) => {
     const production = data.contentfulProduction;
     const pages = data.allSitePage.edges;
 
-    const { events, longDescription, name, productionPhoto, staff } = production;
+    const { events, longDescription, name, productionPhoto, staff, programPages } = production;
 
     return (
         <Layout>
             <main className="production-page">
                 {getCoverPhoto(productionPhoto)}
                 <div className="production_title">{name}</div>
-                <EventDates events={events} />
+                <EventDates events={events} programPages={programPages} />
                 <Navigation ticketsLink ={events[0].ticketsLink} />
                 <div className="production_about" id="production_about">
                     {longDescription && renderRichText(longDescription)}
@@ -46,6 +46,10 @@ export const query = graphql`
     query ($id: String!) {
         contentfulProduction(id: {eq: $id}) {
             name
+            programPages {
+                filename
+                gatsbyImageData
+            }
             productionPhoto {
                     gatsbyImageData
                 }
