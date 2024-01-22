@@ -1,5 +1,5 @@
 import React from 'react';
-import { StaticImage } from "gatsby-plugin-image";
+import { StaticImage, GatsbyImage, getImage } from "gatsby-plugin-image";
 import SocialMediaIcons from '../socialMediaIcons';
 
 const WelcomeText = () => (
@@ -11,21 +11,25 @@ const WelcomeText = () => (
     
 )
 
-class Cover extends React.Component {
-    render() {
-        return (
+const Cover = ({ coverPhoto }) => {
+
+    const photo = !!coverPhoto
+        ? <GatsbyImage alt="" image={getImage(coverPhoto)} />
+        : <StaticImage src="../../images/cover-photo.jpg" alt="Jessica Bloch performing" />
+
+    return (
         <div className="cover">
             <div className="cover_background">
                 <div className="cover_color-block"></div>
                 <div className="cover_photo">
-                    <StaticImage src="../../images/cover-photo.jpg" alt="Jessica Bloch performing" />
+                    {photo}
                 </div>
             </div>  
             <div className="cover_foreground">
                 <WelcomeText />
             </div>
-        </div>);
-    }
+        </div>
+    );
 }
 
 export default Cover;
