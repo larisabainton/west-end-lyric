@@ -28,15 +28,25 @@ const getDate = eventDate => {
     
 }
 
-const getTickets = ticketsLink => {
-    if (ticketsLink) {
+const getTickets = eventLinks => {
+    const {ticketsLink, programAdLink }= eventLinks;
+    
+    if (ticketsLink && programAdLink) {
+        return (
+            <div className="link-wrapper">
+                <TicketsButton ticketsLink={ticketsLink}/>
+                <a className="program-ad-link" target="_blank" rel="noreferrer" href={programAdLink}>Place a Program Ad</a>
+            </div>
+        )
+    }
+    else if (ticketsLink) {
         return <TicketsButton ticketsLink={ticketsLink}/>
     }
 }
 
-const showTicketsOrVenue = (ticketsLink, venue) => {
-    if (ticketsLink) {
-        return getTickets(ticketsLink)
+const showTicketsOrVenue = (eventLinks, venue) => {
+    if (eventLinks && eventLinks.ticketsLink) {
+        return getTickets(eventLinks)
     } else {
         return (
         <div className="eventList_event--location">
@@ -70,9 +80,10 @@ const Events = ({events, pages}) => {
                 {events
                 // filter out events that have passed
                 .filter(({ eventDate }) => (new Date(eventDate).getTime() - new Date().getTime() > 0))
-                .map(({ production: productions, eventDate, venue, eventTitle, ticketsLink }, i) => {
+                .map(({ production: productions, eventDate, venue, eventTitle, ticketsLink, programAdLink }, i) => {
                     const production = productions[0];
                     const linkPath = getPathForProduction(production.id, pages);
+                    const eventLinks = { ticketsLink, programAdLink }
 
 
                     return (
@@ -82,7 +93,7 @@ const Events = ({events, pages}) => {
                             <div className="eventList_event--title">
                                 <Link to={linkPath}>{eventTitle}</Link>
                             </div>
-                            {showTicketsOrVenue(ticketsLink, venue)}
+                            {showTicketsOrVenue(eventLinks, venue)}
                         </div>
                         {getHiddenSection(production, linkPath)}
                     </li>

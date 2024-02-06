@@ -1,9 +1,17 @@
+.link-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
 .tickets-button {
     background-color: $accent-color;
     color: white;
     font-family: $title-font;
     font-size: $subtitle-font-size;
     padding: 8px 10px;
+    text-align: center;
 }
 
 .tickets-button:hover {
@@ -11,6 +19,20 @@
 }
 
 .tickets-button a,
-.tickets-button a:visited {
+.tickets-button a:visited,
+.program-ad-link,
+.program-ad-link:visited {
     color: white;
+}
+
+.program-ad-link {
+    background-color: $highlight-color;
+    color: white;
+    font-family: $title-font;
+    font-size: 12pt;
+    padding: 8px 10px;
+}
+
+.program-ad-link:hover {
+    background-color: $highlight-color--light;
 }

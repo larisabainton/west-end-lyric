@@ -81,6 +81,7 @@ export const query = graphql`
     allContentfulEvent {
       nodes {
           ticketsLink
+          programAdLink
           eventTitle
           eventDate
           venue {
