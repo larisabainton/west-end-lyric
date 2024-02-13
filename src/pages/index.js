@@ -19,6 +19,10 @@ import '@fortawesome/fontawesome-svg-core/styles.css';
 const getCurrentPromotion = (promotionsArray) => {
   const upcomingPromotion = promotionsArray.filter(({ endDate }) => new Date().getTime() - new Date(endDate).getTime() <= 0)[0];
 
+  if (!upcomingPromotion) {
+    return;
+  }
+
   const { startDate, endDate } = upcomingPromotion;
   const today = new Date();
   const isAfterStart = today.getTime() - new Date(startDate).getTime() > 0;
