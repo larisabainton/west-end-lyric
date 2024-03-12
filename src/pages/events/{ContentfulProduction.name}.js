@@ -81,6 +81,8 @@ export const query = graphql`
                 }
             roles {
                 roleName
+                orderNumber
+                instrumentalist
                 castMember {
                     name
                     headshot {

@@ -17,6 +17,7 @@ $artist-border: $accent-color 2px solid;
 }
 
 .cast-list,
+.instrument-list,
 .staff {
     display: flex;
     flex-wrap: wrap;
@@ -40,7 +41,8 @@ $artist-border: $accent-color 2px solid;
 }
 
 .staff-member_title,
-.cast-member_role {
+.cast-member_role,
+.instrument-member_role {
     color: $base-color;
     font-family: $title-font;
     font-size: 12pt;
